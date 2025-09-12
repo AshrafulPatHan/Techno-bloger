@@ -1,4 +1,4 @@
-# Technobloger
+# Technobloger (vite)
 
 ✨ Welcome to the **Technobloger Website**, a platform where technology enthusiasts can read and share articles, tutorials, and the latest news in the tech world. Whether you're a developer, engineer, or simply a tech lover, this website is designed to keep you updated with the ever-evolving world of technology.
 
