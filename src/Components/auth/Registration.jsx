@@ -15,6 +15,8 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 const Registration = () => {
     const [showpas,setshowpas] = useState(false)
     const navigate = useNavigate();
+    // get api link from env file
+    const API = import.meta.env.VITE_API;
 
 
     const validatePassword = (password) => {
@@ -71,7 +73,7 @@ const Registration = () => {
                         console.log('Profile updated successfully');
                         const userData ={ name, email, photoURL};
                         // -----------send to server
-                        fetch('https://techno-server.onrender.com/userData', {
+                        fetch(`${API}/userData`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',

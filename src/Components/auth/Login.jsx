@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import  { useRef, useState } from 'react';
 import Navbar from '../navigation/Navbar';
 import Footer from '../navigation/Footer';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';

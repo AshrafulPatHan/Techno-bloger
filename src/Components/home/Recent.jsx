@@ -48,7 +48,7 @@ const Recent = () => {
 
     // Fetch data
     useEffect(() => {
-        fetch("https://techno-server.onrender.com/limited-data")
+        fetch(`${API}/limited-data`)
             .then((res) => res.json())
             .then((data) => {
                 setAll(data);
@@ -58,7 +58,7 @@ const Recent = () => {
                 console.error("Error fetching data:", error);
                 setLoading(false);
             });
-    }, []);
+    }, [API]);
 
     if (loading) {
         return <div className="flex flex-col items-center my-36">

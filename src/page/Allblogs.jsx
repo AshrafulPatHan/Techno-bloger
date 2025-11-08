@@ -20,9 +20,12 @@ const Allblogs = () => {
         navigate(`/allblogs/${All.id}`, { state: All });
     };
 
+    // get api link from env file
+    const API = import.meta.env.VITE_API;
+
     // fetch data
     useEffect(() => {
-        fetch("https://techno-server.onrender.com/alldata")
+        fetch(`${API}/alldata`)
             .then((res) => res.json())
             .then((data) => {
                 setAll(data);
@@ -37,7 +40,7 @@ const Allblogs = () => {
 
     // Add to WatchList
     const handleWatchList = (All) => {
-        fetch('https://techno-server.onrender.com/watchLists', {
+        fetch(`${API}/watchList`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

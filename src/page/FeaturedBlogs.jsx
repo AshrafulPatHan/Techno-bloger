@@ -10,6 +10,8 @@ const FeaturedBlogs = () => {
     const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
+    // get api link from env file
+    const API = import.meta.env.VITE_API;
 
     const handleExploreDetails = (all) => {
         navigate(`/allblogs/${all.id}`, { state: all });
@@ -64,7 +66,7 @@ const FeaturedBlogs = () => {
     ];
 
     useEffect(() => {
-        fetch("https://techno-server.onrender.com/featured-blogs")
+        fetch(`${API}/featured-blogs`)
             .then((res) => res.json())
             .then((data) => {
                 console.log("Fetched Data:", data);
@@ -80,7 +82,7 @@ const FeaturedBlogs = () => {
                 console.error("Error fetching data:", error);
                 setLoading(false);
             });
-    }, []);
+    }, [API]);
 
     return (
         <div>

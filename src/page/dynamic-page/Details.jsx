@@ -9,15 +9,17 @@ import { MdTipsAndUpdates } from "react-icons/md";
 
 
 const Details = () => {
-    const { state: locationData } = useLocation(); 
+    const { state: locationData } = useLocation();
     const [cardData, setCardData] = useState(locationData || { comments: [] });
     const { user } = useContext(AuthContext);
+    // get api link from env file
+    const API = import.meta.env.VITE_API;
 
-// Update Reviews page
-const navigate = useNavigate();
-const handleUpdate = (cardData) => {
-    navigate(`/update/${cardData.id}`, { state: cardData }); 
-};
+    // Update Reviews page
+    const navigate = useNavigate();
+    const handleUpdate = (cardData) => {
+        navigate(`/update/${cardData.id}`, { state: cardData });
+    };
 
 
     useEffect(() => {
@@ -30,7 +32,7 @@ const handleUpdate = (cardData) => {
     const handleAddComment = (event) => {
         event.preventDefault();
         const form = event.target;
-				
+
         const Comment = form.Comment.value;
         const username = user?.displayName || "Anonymous";
         const userEmail = user?.email || "No Email Provided";
@@ -41,7 +43,7 @@ const handleUpdate = (cardData) => {
             toast.error("All fields are required");
             return;
         }
-		
+
         const detailData = {
             Comment,
             username,
@@ -51,7 +53,7 @@ const handleUpdate = (cardData) => {
             _id: documentId,
         };
         console.log("Submitted comment data:", detailData);
-        fetch("https://techno-server.onrender.com/comant", {
+        fetch(`${API}/comant`, {
 
             method: "PATCH",
             headers: {
@@ -128,7 +130,7 @@ const handleUpdate = (cardData) => {
                         {/* update */}
                         {user?.email === cardData.userEmail && (
                             <div>
-                                <button 
+                                <button
                                     onClick={() => handleUpdate(cardData)}
                                     className="btn btn-active bg-blue-400 text-white mb-3">
                                     Update <MdTipsAndUpdates />
@@ -142,20 +144,20 @@ const handleUpdate = (cardData) => {
                             </div>
                         ) : (
                             <form
-                            className="flex flex-col sm:flex-row sm:items-center items-end mb-6 gap-3"
-                            onSubmit={handleAddComment}
-                        >
-                            <input
-                                type="text"
-                                name="Comment"
-                                placeholder="Type here"
-                                className="input input-bordered input-warning max-w-xs w-[350px]"
-                            />
-                            <button className="btn btn-active border-t-green-400">
-                                Comment <FaCommentDots />
-                            </button>
-                        </form>
-                        ) }
+                                className="flex flex-col sm:flex-row sm:items-center items-end mb-6 gap-3"
+                                onSubmit={handleAddComment}
+                            >
+                                <input
+                                    type="text"
+                                    name="Comment"
+                                    placeholder="Type here"
+                                    className="input input-bordered input-warning max-w-xs w-[350px]"
+                                />
+                                <button className="btn btn-active border-t-green-400">
+                                    Comment <FaCommentDots />
+                                </button>
+                            </form>
+                        )}
                         <div className="mockup-window bg-base-300 border w-[300px] md:w-[650px] xl:w-[700px]">
                             <div className="bg-base-200 flex px-4 py-6">
                                 <div className="flex flex-col items-start">
