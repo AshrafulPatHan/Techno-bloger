@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../auth/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
@@ -10,6 +10,9 @@ const Recent = () => {
     const [loading, setLoading] = useState(true);
     const [cardData, setCardData] = useState(locationData || {});
     const { user } = useContext(AuthContext);
+
+    // get api link from env file
+    const API = import.meta.env.VITE_API;
 
     useEffect(() => {
         if (locationData) {
@@ -25,37 +28,37 @@ const Recent = () => {
 
     // Add to WatchList
     const handleWatchList = (All) => {
-fetch('https://techno-server.onrender.com/watchLists', {
+        fetch(`${API}/watchLists`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(All), // Send only the selected item
         })
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            toast.success("Watchlist added successfully!");
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-            toast.error("Error adding to watchlist");
-        });
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                toast.success("Watchlist added successfully!");
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                toast.error("Error adding to watchlist");
+            });
     };
 
-// Fetch data
-useEffect(() => {
-    fetch("https://techno-server.onrender.com/limited-data")
-    .then((res) => res.json())
-    .then((data) => {
-        setAll(data);
-        setLoading(false);
-    })
-    .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-    });
-}, []);
+    // Fetch data
+    useEffect(() => {
+        fetch("https://techno-server.onrender.com/limited-data")
+            .then((res) => res.json())
+            .then((data) => {
+                setAll(data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+                setLoading(false);
+            });
+    }, []);
 
     if (loading) {
         return <div className="flex flex-col items-center my-36">
@@ -75,14 +78,14 @@ useEffect(() => {
                         all.map(All => (
                             <div key={All.id}>
                                 <motion.div
-                                whileHover={{
-                                    y:-9,
-                                }}
-                                transition={{
-                                    ease:"easeInOut",
-                                    duration:0.3,
-                                }}
-                                className="w-[99vw] sm:w-[350px] h-[520px] space-y-4 rounded-lg bg-white p-6 shadow-lg dark:shadow-[#303c42] hover:shadow-xl 
+                                    whileHover={{
+                                        y: -9,
+                                    }}
+                                    transition={{
+                                        ease: "easeInOut",
+                                        duration: 0.3,
+                                    }}
+                                    className="w-[99vw] sm:w-[350px] h-[520px] space-y-4 rounded-lg bg-white p-6 shadow-lg dark:shadow-[#303c42] hover:shadow-xl 
                                     md:w-[350px] dark:bg-[#18181B] flex flex-col justify-between">
                                     <img width={400} height={400} className="h-[275px] w-[350px] rounded-lg object-cover" src={All.Image} alt="card image" />
                                     <div className="grid gap-2">
@@ -92,20 +95,20 @@ useEffect(() => {
                                         </p>
                                     </div>
                                     <div className="flex gap-4 ">
-                                        <motion.button 
-                                        whileHover={{ scale: 1.08 }}
-                                        whileTap={{ scale: 0.8 }}
-                                        className="rounded-lg bg-slate-800 px-6 py-2 text-[12px] font-semibold text-white duration-300 
+                                        <motion.button
+                                            whileHover={{ scale: 1.08 }}
+                                            whileTap={{ scale: 0.8 }}
+                                            className="rounded-lg bg-slate-800 px-6 py-2 text-[12px] font-semibold text-white duration-300 
                                         hover:bg-slate-950 sm:text-sm md:text-base "
-                                        onClick={() => handleExploreDetails(All)}>
+                                            onClick={() => handleExploreDetails(All)}>
                                             Details
                                         </motion.button>
                                         {user ? (
                                             <motion.button
-                                            whileHover={{ scale: 1.08 }}
-                                            whileTap={{ scale: 0.8 }}
-                                            className='btn btn-active btn-primary  text-white text-[16px] font-semibold  '
-                                            onClick={() => handleWatchList(All)}>
+                                                whileHover={{ scale: 1.08 }}
+                                                whileTap={{ scale: 0.8 }}
+                                                className='btn btn-active btn-primary  text-white text-[16px] font-semibold  '
+                                                onClick={() => handleWatchList(All)}>
                                                 Wishlist
                                             </motion.button>
                                         ) : (

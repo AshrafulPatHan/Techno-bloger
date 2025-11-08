@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import Navbar from '../navigation/Navbar';
 import Footer from '../navigation/Footer';
 import Hero from './Hero';
