@@ -6,7 +6,7 @@ import { updateProfile } from "firebase/auth";
 import auth from '../Components/auth/Firebase/Firebase.init';
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
-import { FaUser, FaEnvelope, FaImage, FaEdit, FaCamera, FaCheckCircle } from "react-icons/fa";
+import { FaUser, FaEnvelope, FaImage, FaEdit, FaCamera, FaCheckCircle, FaFacebook, FaLinkedin, FaInstagram, FaDribbble, FaTwitter, FaYoutube } from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
 
 export default function Dashboard() {
@@ -21,10 +21,7 @@ export default function Dashboard() {
             color: 'from-pink-500 to-rose-500',
             hoverColor: 'hover:from-pink-600 hover:to-rose-600',
             icon: (
-                <svg width="20px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                    <circle fill="#DC4373" cx="256" cy="256" r="256"/>
-                    <path fill="#F0F1F1" d="M255.997,109.654c-80.796,0-146.529,65.655-146.529,146.348s65.733,146.342,146.529,146.342c80.799,0,146.535-65.646,146.535-146.342C402.532,175.309,336.796,109.654,255.997,109.654z"/>
-                </svg>
+                <FaDribbble/>
             )
         },
         { 
@@ -32,10 +29,7 @@ export default function Dashboard() {
             color: 'from-sky-400 to-blue-500',
             hoverColor: 'hover:from-sky-500 hover:to-blue-600',
             icon: (
-                <svg width="20px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                    <circle fill="#65A2D9" cx="256" cy="256" r="256"/>
-                    <path fill="#FFFFFF" d="M397.872,162.471c-6.513,2.889-13.271,5.167-20.208,6.815c7.644-7.261,13.39-16.346,16.631-26.484"/>
-                </svg>
+                <FaTwitter/>
             )
         },
         { 
@@ -43,10 +37,7 @@ export default function Dashboard() {
             color: 'from-purple-500 to-pink-500',
             hoverColor: 'hover:from-purple-600 hover:to-pink-600',
             icon: (
-                <svg width="20px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                    <circle fill="#6C27B3" cx="256" cy="256" r="256"/>
-                    <path fill="#FFFFFF" d="M315.227,109.468H196.772c-48.14,0-87.304,39.164-87.304,87.304v118.455c0,48.138,39.164,87.305,87.305,87.305h118.455"/>
-                </svg>
+                <FaInstagram/>
             )
         },
         { 
@@ -54,10 +45,7 @@ export default function Dashboard() {
             color: 'from-red-500 to-red-600',
             hoverColor: 'hover:from-red-600 hover:to-red-700',
             icon: (
-                <svg width="20px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                    <circle fill="#D22215" cx="256" cy="256" r="256"/>
-                    <path fill="#FFFFFF" d="M341.649,152.333H170.351c-33.608,0-60.852,27.245-60.852,60.852v85.632"/>
-                </svg>
+                <FaYoutube/>
             )
         },
         { 
@@ -65,10 +53,7 @@ export default function Dashboard() {
             color: 'from-blue-600 to-blue-700',
             hoverColor: 'hover:from-blue-700 hover:to-blue-800',
             icon: (
-                <svg width="20px" viewBox="0 0 512.002 512.002" xmlns="http://www.w3.org/2000/svg">
-                    <circle fill="#4E598F" cx="256.001" cy="256" r="256"/>
-                    <path fill="#FFFFFF" d="M363.043,109.466H148.958c-21.809,0-39.49,17.68-39.49,39.49v214.085"/>
-                </svg>
+                <FaFacebook/>
             )
         }
     ];
