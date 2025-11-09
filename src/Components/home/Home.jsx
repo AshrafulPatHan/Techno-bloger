@@ -10,7 +10,7 @@ import Mape from './Mape';
 
 const Home = () => {
     return (
-        <>
+        <div className='max-w-screen overflow-x-hidden'>
             <div >
                 <Navbar/>
                 <Hero/>
@@ -20,7 +20,7 @@ const Home = () => {
                 <Newsleer/>
                 <Footer/>
             </div>
-        </>
+        </div>
     );
 };
 
