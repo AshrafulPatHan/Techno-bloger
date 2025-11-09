@@ -200,12 +200,12 @@ const Navbar = () => {
                             )}
                         </div>
                         {/* light mode /dark mode ------------- */}
-                        <label className="swap swap-rotate mr-0 md:mr-2">
+                        <label className="swap swap-rotate mr-0 md:mr-2 border-2 border-black dark:border-white rounded-full p-2 w-10 h-10 ">
                             <input type="checkbox" onClick={toggleTheme} className="theme-controller" value="synthwave" />
                             {/* sun icon */}
-                            <IoIosPartlySunny className='swap-off h-10 w-10 fill-current text-black' />
+                            <IoIosPartlySunny className='swap-off h-10 w-8 fill-current text-black dark:text-white' />
                             {/* moon icon */}
-                            <IoMdCloudyNight className="swap-on h-10 w-10 fill-current text-black" />
+                            <IoMdCloudyNight className="swap-on h-10 w-8 fill-current text-black dark:text-white" />
                         </label>
                         {/* user in desktop */}
                         <div className='hidden lg:flex'>
