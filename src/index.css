@@ -3,6 +3,15 @@
 @tailwind utilities;
 
 
+/* hero section */
+.hero-background{
+    background-image: url('./assets/background.avif');
+    width: 100%;
+    background-size: 100vw auto;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
 
 /* Normal */
 

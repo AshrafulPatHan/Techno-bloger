@@ -103,8 +103,8 @@ const FeaturedBlogs = () => {
                 <div className="flex items-center gap-4 py-2">
                     <div className="relative group">
                         <div className="w-20 h-20 rounded-xl overflow-hidden shadow-md">
-                            <img 
-                                src={row.Image} 
+                            <img
+                                src={row.Image}
                                 alt={row.Title}
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                             />
@@ -211,7 +211,7 @@ const FeaturedBlogs = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 dark:from-gray-800 via-blue-50 dark:via-gray-700 to-gray-100 dark:to-gray-900">
             <Navbar />
-            
+
             {/* Hero Section */}
             <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-purple-700 text-white py-16 md:py-20">
                 <div className="max-w-7xl mx-auto px-6">
@@ -283,7 +283,7 @@ const FeaturedBlogs = () => {
 
             {/* DataTable Section */}
             <div className="max-w-7xl mx-auto px-6 pb-16">
-                <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div className="bg-white  rounded-2xl shadow-xl overflow-hidden">
                     <DataTable
                         columns={columns}
                         data={data}
@@ -319,7 +319,7 @@ const FeaturedBlogs = () => {
                         <div>
                             <h3 className="text-lg font-bold text-gray-800 mb-2">How It Works</h3>
                             <p className="text-gray-700">
-                                Click on any row to read the full blog post. Featured blogs are sorted by word count, 
+                                Click on any row to read the full blog post. Featured blogs are sorted by word count,
                                 showcasing our most comprehensive and detailed articles.
                             </p>
                         </div>
@@ -336,7 +336,7 @@ export default FeaturedBlogs;
 
 
 
-// old code 
+// old code
 
 // import React, { useEffect, useState } from 'react';
 // import Navbar from '../Components/navigation/Navbar';

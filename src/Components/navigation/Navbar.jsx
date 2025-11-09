@@ -66,8 +66,8 @@ const Navbar = () => {
 
 
     return (
-        <div className='sticky top-0 z-50'>
-            <div className={` transition-colors duration-300  ${scrolled ? "bg-[#00000010] backdrop-blur-[12px] border-b-2 border-b-[#0000000e] " : "bg-white dark:bg-gray-900"
+        <div className='sticky top-0 z-50 '>
+            <div className={` transition-colors duration-300  ${scrolled ? "bg-[#00000010] backdrop-blur-[12px] border-b-2 border-b-[#0000000e] " : "bg-white dark:bg-gray-900 "
                 }`} >
                 <div className="navbar max-w-[1500px] mx-auto ">
                     <div className="navbar-start">
@@ -240,6 +240,7 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
+                <div className={` transition-colors duration-300  ${scrolled ? "bg-none " : "absolute w-[40%] h-[50%] bg-blue-800 rounded-b-full top-0 left-[30%] mix-blend-multiply filter blur-xl opacity-50 z-10  "}`} ></div>
             </div>
         </div>
     );
