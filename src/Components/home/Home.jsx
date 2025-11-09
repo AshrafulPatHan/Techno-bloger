@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import Navbar from '../navigation/Navbar';
 import Footer from '../navigation/Footer';
 import Hero from './Hero';
@@ -11,17 +10,17 @@ import Mape from './Mape';
 
 const Home = () => {
     return (
-        <>
+        <div className='max-w-screen overflow-x-hidden'>
             <div >
                 <Navbar/>
                 <Hero/>
                 <AboutUs/>
                 <Recent/>
-                <Newsleer/>
                 <Mape/>
+                <Newsleer/>
                 <Footer/>
             </div>
-        </>
+        </div>
     );
 };
 

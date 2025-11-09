@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import  { useRef, useState } from 'react';
 import Navbar from '../navigation/Navbar';
 import Footer from '../navigation/Footer';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
@@ -9,9 +9,6 @@ import { Link, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { FaEye } from 'react-icons/fa';
 import { FaEyeLowVision } from 'react-icons/fa6';
-
-
-
 
 
 const Login = () => {
