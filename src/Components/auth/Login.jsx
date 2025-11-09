@@ -11,9 +11,6 @@ import { FaEye } from 'react-icons/fa';
 import { FaEyeLowVision } from 'react-icons/fa6';
 
 
-
-
-
 const Login = () => {
     const [showpas, setShowPas] = useState(false);
     const [loading,setLoading] =useState(true) ;
