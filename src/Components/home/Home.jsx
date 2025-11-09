@@ -10,17 +10,20 @@ import Mape from './Mape';
 
 const Home = () => {
     return (
-        <div className='max-w-screen overflow-x-hidden'>
-            <div >
-                <Navbar/>
-                <Hero/>
-                <AboutUs/>
-                <Recent/>
-                <Mape/>
-                <Newsleer/>
-                <Footer/>
-            </div>
-        </div>
+        < >
+
+            <Navbar />
+            <main className='max-w-screen overflow-x-hidden'>
+                <Hero />
+                <AboutUs />
+                <Recent />
+                <Mape />
+                <Newsleer />
+            </main>
+            <Footer />
+
+
+        </>
     );
 };
 

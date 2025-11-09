@@ -67,7 +67,7 @@ const Navbar = () => {
 
     return (
         <div className='sticky top-0 z-50'>
-            <div className={` transition-colors duration-300 ${scrolled ? "bg-[#B5FCCD]" : "bg-white"
+            <div className={` transition-colors duration-300 ${scrolled ? "bg-[#00000010] backdrop-blur-[12px] border-b-2 border-b-[#0000000e] " : "bg-white dark:bg-gray-900"
                 }`} >
                 <div className="navbar ">
                     <div className="navbar-start">
@@ -147,14 +147,23 @@ const Navbar = () => {
                         ) : (
                             <div className="flex flex-row items-center gap-4 px-1">
                                 <div>
-                                    <Link to='/' className='text-2xl text-green-600 font-bold hover:text-blue-500 transition-all duration-500'>Home</Link>
+                                    <Link to='/' className='text-xl text-green-600 font-bold hover:text-blue-500 transition-all duration-500'>Home</Link>
                                 </div>
                                 <div>
-                                    <Link to='/allblogs' className='text-2xl text-green-600 font-bold hover:text-blue-500 transition-all duration-500'>All blogs</Link>
+                                    <Link to='/allblogs' className='text-xl text-green-600 font-bold hover:text-blue-500 transition-all duration-500'>All blogs</Link>
                                 </div>
                                 <div>
-                                    <Link to='/featuredblogs' className='text-2xl text-green-600 font-bold hover:text-blue-500 transition-all duration-500'>Featured Blogs</Link>
+                                    <Link to='/featuredblogs' className='text-xl text-green-600 font-bold hover:text-blue-500 transition-all duration-500'>Featured Blogs</Link>
                                 </div>
+                                <Link to='/addblog' className='text-xl text-green-600 font-bold hover:text-blue-500 transition-all duration-500'>
+                                    Add Blog
+                                </Link>
+                                <Link to='/wishlist' className='text-xl text-green-600 font-bold hover:text-blue-500 transition-all duration-500'>
+                                    Wishlist
+                                </Link>
+                                <Link to='/dashboard' className='text-xl text-green-600 font-bold hover:text-blue-500 transition-all duration-500'>
+                                    Dashboard
+                                </Link>
                             </div>
                         )}
                     </div>
@@ -220,8 +229,10 @@ const Navbar = () => {
                                     </div>
                                 ) : (
                                     <div className="flex flex-row items-center gap-1">
-                                        <Link to='/login' className="btn text-sm sm:text-xl ">Login</Link>
-                                        <Link to='/registration' className="btn text-sm sm:text-xl ">Register</Link>
+                                        <Link to='/login' className="rounded-lg bg-slate-800 px-6 py-2 text-[12px] font-semibold text-white duration-300 
+                                                hover:bg-slate-950 sm:text-sm md:text-base ">Login</Link>
+                                        <Link to='/registration' className="rounded-lg bg-slate-800 px-6 py-2 text-[12px] font-semibold text-white duration-300 
+                                                hover:bg-slate-950 sm:text-sm md:text-base ">Register</Link>
                                     </div>
                                 )}
                             </div>
