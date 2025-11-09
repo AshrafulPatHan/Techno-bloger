@@ -1,3 +1,6 @@
+
+// wethout dark mode code => 
+
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Components/navigation/Navbar';
 import Footer from '../Components/navigation/Footer';
@@ -206,7 +209,7 @@ const FeaturedBlogs = () => {
     }, [API]);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 dark:from-gray-800 via-blue-50 dark:via-gray-700 to-gray-100 dark:to-gray-900">
             <Navbar />
             
             {/* Hero Section */}
@@ -238,40 +241,40 @@ const FeaturedBlogs = () => {
             {/* Stats Cards */}
             <div className="max-w-7xl mx-auto px-6 -mt-8 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
                         <div className="flex items-center gap-4">
-                            <div className="bg-blue-100 p-4 rounded-xl">
+                            <div className="bg-blue-100 dark:bg-gray-700 p-4 rounded-xl">
                                 <FaBook className="text-3xl text-blue-600" />
                             </div>
                             <div>
-                                <div className="text-3xl font-bold text-gray-800">{data.length}</div>
-                                <div className="text-sm text-gray-600">Featured Articles</div>
+                                <div className="text-3xl font-bold text-gray-800 dark:text-blue-100">{data.length}</div>
+                                <div className="text-sm text-gray-600 dark:text-blue-100">Featured Articles</div>
                             </div>
                         </div>
                     </div>
-                    <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
                         <div className="flex items-center gap-4">
-                            <div className="bg-purple-100 p-4 rounded-xl">
+                            <div className="bg-purple-100 dark:bg-gray-700 p-4 rounded-xl">
                                 <FaUser className="text-3xl text-purple-600" />
                             </div>
                             <div>
-                                <div className="text-3xl font-bold text-gray-800">
+                                <div className="text-3xl font-bold text-gray-800  dark:text-blue-100">
                                     {new Set(data.map(d => d.username)).size}
                                 </div>
-                                <div className="text-sm text-gray-600">Contributing Authors</div>
+                                <div className="text-sm text-gray-600  dark:text-blue-100">Contributing Authors</div>
                             </div>
                         </div>
                     </div>
-                    <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
                         <div className="flex items-center gap-4">
-                            <div className="bg-green-100 p-4 rounded-xl">
+                            <div className="bg-green-100 dark:bg-gray-700 p-4 rounded-xl">
                                 <FaTag className="text-3xl text-green-600" />
                             </div>
                             <div>
-                                <div className="text-3xl font-bold text-gray-800">
+                                <div className="text-3xl font-bold text-gray-800 dark:text-blue-100">
                                     {new Set(data.map(d => d.category)).size}
                                 </div>
-                                <div className="text-sm text-gray-600">Categories</div>
+                                <div className="text-sm text-gray-600  dark:text-blue-100">Categories</div>
                             </div>
                         </div>
                     </div>

@@ -32,7 +32,7 @@ function App() {
           <Route path="/update/:id" element={<Privaterout><Update/></Privaterout>} />
           <Route path="/wishlist" element={<Privaterout><Wishlist /></Privaterout>} />
           <Route path="/dashboard" element={<Privaterout><Dashboard /></Privaterout>} />
-          <Route path="/allblogs/:id" element={<Privaterout><Details /></Privaterout>} />
+          <Route path="/allblogs/:id" element={<Details />} />
           <Route path="*" element={<Error />} />
         </Routes>
         <ToastContainer

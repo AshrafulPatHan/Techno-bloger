@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../auth/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 import { motion } from "motion/react"
+import { FaHeart } from 'react-icons/fa';
 
 const Recent = () => {
     const [all, setAll] = useState([]);
@@ -78,6 +79,7 @@ const Recent = () => {
                         all.map(All => (
                             <div key={All.id}>
                                 <motion.div
+
                                     whileHover={{
                                         y: -9,
                                     }}
@@ -85,21 +87,37 @@ const Recent = () => {
                                         ease: "easeInOut",
                                         duration: 0.3,
                                     }}
-                                    className="w-[99vw] sm:w-[350px] h-[520px] space-y-4 rounded-lg bg-white p-6 shadow-lg dark:shadow-[#303c42] hover:shadow-xl 
+                                    className="w-[99%] sm:w-[350px] h-[520px] space-y-4 rounded-lg bg-white p-6 shadow-lg dark:shadow-[#303c42] hover:shadow-xl 
                                     md:w-[350px] dark:bg-[#18181B] flex flex-col justify-between">
-                                    <img className="h-[275px] w-[350px] rounded-lg object-cover" src={All.Image} alt="card image" />
+                                    {/* Image Container */}
+                                    <div className="relative h-56 overflow-hidden group rounded-lg">
+                                        <img
+                                            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                                            src={All.Image}
+                                            alt={All.Title}
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                                        {/* Category Badge */}
+                                        <div className="absolute top-4 left-4">
+                                            <span className="bg-blue-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                                                {All.category || 'General'}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    {/* <img className="h-[275px] w-[350px] rounded-lg object-cover" src={blog.Image} alt="card image" /> */}
                                     <div className="grid gap-2">
                                         <h1 className="text-lg font-semibold font-sans ">{All.Title}</h1>
                                         <p className="text-sm text-gray-500 dark:text-white/60">
-                                            {All.shortdescription.length > 150? `${All.shortdescription.substring(0,150)}...`:All.shortdescription}
+                                            {All.shortdescription.length > 150 ? `${All.shortdescription.substring(0, 150)}...` : All.shortdescription}
                                         </p>
                                     </div>
-                                    <div className="flex gap-4 ">
+                                    <div className="flex items-center justify-between gap-4 ">
                                         <motion.button
                                             whileHover={{ scale: 1.08 }}
                                             whileTap={{ scale: 0.8 }}
                                             className="rounded-lg bg-slate-800 px-6 py-2 text-[12px] font-semibold text-white duration-300 
-                                        hover:bg-slate-950 sm:text-sm md:text-base "
+                                                hover:bg-slate-950 sm:text-sm md:text-base "
                                             onClick={() => handleExploreDetails(All)}>
                                             Details
                                         </motion.button>
@@ -109,11 +127,11 @@ const Recent = () => {
                                                 whileTap={{ scale: 0.8 }}
                                                 className='btn btn-active btn-primary  text-white text-[16px] font-semibold  '
                                                 onClick={() => handleWatchList(All)}>
-                                                Wishlist
+                                                <FaHeart />
                                             </motion.button>
                                         ) : (
                                             <Link to='/login' className='btn btn-active btn-primary text-white text-[16px] font-semibold'>
-                                                Wishlist
+                                                <FaHeart />
                                             </Link>
                                         )}
                                     </div>
