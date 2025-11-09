@@ -87,7 +87,7 @@ const Allblogs = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 max-w-screen overflow-x-hidden">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 dark:from-gray-600 via-blue-50 dark:via-gray-500  to-gray-100 dark:to-gray-700 max-w-screen ">
             <Navbar />
 
             {/* Hero Section */}
@@ -126,7 +126,7 @@ const Allblogs = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="bg-white rounded-2xl shadow-xl p-6 md:p-8"
+                    className="bg-white dark:bg-gray-600 rounded-2xl shadow-xl p-6 md:p-8"
                 >
                     <div className="flex flex-col md:flex-row gap-4">
                         {/* Search Input */}
@@ -135,7 +135,7 @@ const Allblogs = () => {
                             <input
                                 type="text"
                                 placeholder="Search blogs by title..."
-                                className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none transition-all text-gray-700 font-medium"
+                                className="w-full pl-12 pr-4 py-4 border-2 border-gray-200  rounded-xl focus:border-blue-500 focus:outline-none transition-all text-gray-700 font-medium"
                                 value={searchText}
                                 onChange={(e) => setSearchText(e.target.value)}
                             />
@@ -145,7 +145,7 @@ const Allblogs = () => {
                         <div className="md:w-64 relative">
                             <FaFilter className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
                             <select
-                                className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none transition-all appearance-none bg-white text-gray-700 font-medium cursor-pointer"
+                                className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 dark:border-gray-400 rounded-xl focus:border-blue-500 focus:outline-none transition-all appearance-none bg-white dark:bg-gray-700 text-gray-700 dark:text-blue-200 font-medium cursor-pointer"
                                 value={category}
                                 onChange={(e) => setCategory(e.target.value)}
                             >
@@ -163,14 +163,14 @@ const Allblogs = () => {
                     </div>
 
                     {/* Results Count */}
-                    <div className="mt-4 text-sm text-gray-600 font-medium">
-                        Showing <span className="text-blue-600 font-bold">{filteredBlogs.length}</span> of <span className="font-bold">{all.length}</span> blogs
+                    <div className="mt-4 text-sm text-gray-600 dark:text-gray-50 font-medium">
+                        Showing <span className="text-blue-500 font-bold">{filteredBlogs.length}</span> of <span className="font-bold">{all.length}</span> blogs
                     </div>
                 </motion.div>
             </div>
 
             {/* Blog Cards Grid */}
-            <div className=" max-w-[1550px] mx-auto px-6 py-12 md:py-16 flex flex-col items-center">
+            <div className=" max-w-[1550px] mx-auto px-6 py-12 md:py-16 flex flex-col items-center ">
                 {filteredBlogs.length === 0 ? (
                     <div className="text-center py-20">
                         <div className="text-6xl mb-4">📝</div>
