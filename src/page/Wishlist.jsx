@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import Navbar from "../Components/navigation/Navbar";
 import Footer from "../Components/navigation/Footer";
 import { useNavigate } from "react-router";
 import { MdDelete } from "react-icons/md";
 import swal from "sweetalert";
 import { toast } from "react-toastify";
+import { AuthContext } from "../Components/auth/AuthProvider/AuthProvider";
 
 const Wishlist = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
-    // get api link from env file
-    const API = import.meta.env.VITE_API;
+    const { user } = useContext(AuthContext); // get user data
+    const API = import.meta.env.VITE_API; // get api link from env file
 
     const navigate = useNavigate();
 
@@ -18,20 +19,28 @@ const Wishlist = () => {
         navigate(`/allblogs/${all.id}`, { state: all });
     };
 
+    const userEmail = { email: `${user.email}` }
     useEffect(() => {
-        fetch(`${API}/watchListsdata`)
+        async function getWish() {
+            try {
+                const response = await fetch(`${API}/watchListsdata`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userEmail)
+                })
 
-            .then((res) => res.json())
-            .then((data) => {
-                console.log("Fetched Data:", data);
-                setData(data);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.error("Error fetching data:", error);
-                setLoading(false);
-            });
-    }, []);
+                const result = await response.json();
+                setData(result)
+                setLoading(false)
+                console.log('Success:', result);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+
+        } getWish()
+    }, [user?.email]);
 
 
     const handleDelete = (id) => {
