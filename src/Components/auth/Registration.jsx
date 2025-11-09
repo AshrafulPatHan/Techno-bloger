@@ -108,7 +108,7 @@ const Registration = () => {
         <div>
             <div>
                 {/* <Navbar /> */}
-                <div className='max-w-screen overflow-x-hidden max-h-screen overflow-y-hidden bg-[#e2dada] dark:bg-gray-900 '>
+                <div className='max-w-screen overflow-x-hidden bg-[#e2dada] dark:bg-gray-900 '>
                     <div>
                         <div className="hero  min-h-screen">
                             <div className="flex flex-col lg:flex-row">
@@ -179,11 +179,11 @@ const Registration = () => {
                                                 </button>
                                             </div>
                                             <div className="form-control mt-6">
-                                                <button type="submit" className="btn btn-primary text-white">
+                                                <button type="submit" className="btn border-none bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all">
                                                     Register
                                                 </button>
                                             </div>
-                                            <Link to="/Login">Or Login</Link>
+                                            <Link to="/Login">Already have an account? <span className='underline'>Login Now</span> </Link>
                                         </form>
                                     </div>
                                 </div>
