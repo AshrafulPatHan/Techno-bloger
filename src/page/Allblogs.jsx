@@ -87,7 +87,7 @@ const Allblogs = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 dark:from-gray-600 via-blue-50 dark:via-gray-500  to-gray-100 dark:to-gray-700 max-w-screen ">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 dark:from-gray-800 via-blue-50 dark:via-gray-700  to-gray-100 dark:to-gray-900 max-w-screen ">
             <Navbar />
 
             {/* Hero Section */}
