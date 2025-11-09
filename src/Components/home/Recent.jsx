@@ -87,11 +87,11 @@ const Recent = () => {
                                     }}
                                     className="w-[99vw] sm:w-[350px] h-[520px] space-y-4 rounded-lg bg-white p-6 shadow-lg dark:shadow-[#303c42] hover:shadow-xl 
                                     md:w-[350px] dark:bg-[#18181B] flex flex-col justify-between">
-                                    <img width={400} height={400} className="h-[275px] w-[350px] rounded-lg object-cover" src={All.Image} alt="card image" />
+                                    <img className="h-[275px] w-[350px] rounded-lg object-cover" src={All.Image} alt="card image" />
                                     <div className="grid gap-2">
-                                        <h1 className="text-lg font-semibold ">{All.Title}</h1>
+                                        <h1 className="text-lg font-semibold font-sans ">{All.Title}</h1>
                                         <p className="text-sm text-gray-500 dark:text-white/60">
-                                            {All.shortdescription}
+                                            {All.shortdescription.length > 150? `${All.shortdescription.substring(0,150)}...`:All.shortdescription}
                                         </p>
                                     </div>
                                     <div className="flex gap-4 ">

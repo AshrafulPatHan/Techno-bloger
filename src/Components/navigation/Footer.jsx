@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 const Footer = () => {
     return (
         <div>
-            <div className='mt-4'>
+            <div className=''>
                 <footer className="footer bg-[#393E46] dark:bg-base-200 text-black dark:text-white p-10">
                     <nav>
                         <h6 className="footer-title">Services</h6>
