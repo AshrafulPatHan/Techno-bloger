@@ -222,7 +222,8 @@ const Navbar = () => {
                                                     onMouseLeave={() => setShowTooltip(false)}
                                                 />
                                             </div>
-                                            <button onClick={handleLogout} className="btn text-sky-600">
+                                            <button onClick={handleLogout} className="rounded-lg bg-slate-800 px-6 py-2 text-[12px] font-semibold text-blue-400 duration-300 
+                                                hover:bg-slate-950 sm:text-sm md:text-base font-sans ">
                                                 Log out
                                             </button>
                                         </div>
