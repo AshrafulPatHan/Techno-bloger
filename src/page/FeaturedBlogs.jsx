@@ -238,7 +238,7 @@ const FeaturedBlogs = () => {
             {/* Stats Cards */}
             <div className="max-w-7xl mx-auto px-6 -mt-8 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div className="bg-white dark:bg-black rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
                         <div className="flex items-center gap-4">
                             <div className="bg-blue-100 p-4 rounded-xl">
                                 <FaBook className="text-3xl text-blue-600" />

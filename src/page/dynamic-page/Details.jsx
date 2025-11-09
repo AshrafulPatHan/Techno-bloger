@@ -117,17 +117,17 @@ const Details = () => {
             {/* Main Content */}
             <div className="max-w-5xl mx-auto px-4 md:px-6 py-12">
                 {/* Featured Quote */}
-                <div className="relative bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-600 rounded-r-2xl p-8 mb-10 shadow-md">
+                <div className="relative bg-gradient-to-r from-blue-50 dark:from-gray-500 to-indigo-50 dark:to-gray-600 border-l-4 border-blue-600 rounded-r-2xl p-8 mb-10 shadow-md dark:shadow-gray-500">
                     <BiSolidQuoteAltLeft className="absolute top-4 left-4 text-5xl text-blue-200 opacity-50" />
-                    <p className="text-xl md:text-2xl font-semibold text-gray-800 italic pl-8">
+                    <p className="text-xl md:text-2xl font-semibold text-gray-800 dark:text-blue-200 italic pl-8">
                         {cardData.shortdescription}
                     </p>
                 </div>
 
                 {/* Article Content */}
                 <article className="prose prose-lg max-w-none mb-12">
-                    <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-                        <div className="text-gray-700 leading-relaxed text-lg">
+                    <div className="bg-white dark:bg-gray-500 rounded-2xl shadow-lg p-8 md:p-12">
+                        <div className="text-gray-700 dark:text-white leading-relaxed text-lg">
                             {cardData.longdescription}
                         </div>
                     </div>
@@ -147,8 +147,8 @@ const Details = () => {
                 )}
 
                 {/* Comments Section */}
-                <div className="bg-white rounded-2xl shadow-lg p-6 md:p-10">
-                    <h2 className="flex items-center gap-3 text-3xl font-bold text-gray-800 mb-8">
+                <div className="bg-white text-black dark:text-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-10">
+                    <h2 className="flex items-center gap-3 text-3xl font-bold text-gray-800 dark:text-gray-100 mb-8">
                         <FaCommentDots className="text-blue-600" />
                         Comments
                         <span className="text-lg font-normal text-gray-500">
@@ -171,7 +171,7 @@ const Details = () => {
                                     type="text"
                                     name="Comment"
                                     placeholder="Share your thoughts..."
-                                    className="flex-1 px-6 py-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none transition-colors text-lg"
+                                    className="flex-1 px-6 py-4 border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 rounded-xl focus:border-blue-500 focus:outline-none transition-colors text-lg"
                                 />
                                 <button 
                                     type="submit"
@@ -190,7 +190,7 @@ const Details = () => {
                             cardData.comments.map((comment, index) => (
                                 <div 
                                     key={index} 
-                                    className="bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors duration-200"
+                                    className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:bg-gray-100 transition-colors duration-200"
                                 >
                                     <div className="flex items-start gap-4">
                                         <div className="avatar flex-shrink-0">
@@ -207,7 +207,7 @@ const Details = () => {
                                                 <h4 className="font-bold text-gray-900 text-lg">
                                                     {comment.username}
                                                 </h4>
-                                                <span className="flex items-center gap-1 text-sm text-gray-500">
+                                                <span className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-100">
                                                     <FaClock className="text-xs" />
                                                     {new Date(comment.date).toLocaleDateString('en-US', {
                                                         month: 'short',
@@ -218,7 +218,7 @@ const Details = () => {
                                                     })}
                                                 </span>
                                             </div>
-                                            <p className="text-gray-700 text-base leading-relaxed">
+                                            <p className="text-gray-700  dark:text-gray-100 text-base leading-relaxed">
                                                 {comment.Comment}
                                             </p>
                                         </div>
