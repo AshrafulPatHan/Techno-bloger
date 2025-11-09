@@ -90,7 +90,7 @@ const Details = () => {
     return (
         <>
             <Navbar />
-            
+
             {/* Hero Image Section */}
             <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800">
                 <img
@@ -99,7 +99,7 @@ const Details = () => {
                     className="w-full h-full object-cover opacity-90"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                
+
                 {/* Floating Title Card */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
                     <div className="max-w-5xl mx-auto">
@@ -165,6 +165,7 @@ const Details = () => {
                             </p>
                         </div>
                     ) : (
+                        // post comment
                         <form onSubmit={handleAddComment} className="mb-10">
                             <div className="flex flex-col md:flex-row gap-4">
                                 <input
@@ -173,13 +174,22 @@ const Details = () => {
                                     placeholder="Share your thoughts..."
                                     className="flex-1 px-6 py-4 border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 rounded-xl focus:border-blue-500 focus:outline-none transition-colors text-lg"
                                 />
-                                <button 
-                                    type="submit"
-                                    className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
-                                >
-                                    <FaCommentDots />
-                                    Post Comment
-                                </button>
+                                {user ? (
+                                    <button
+                                        type="submit"
+                                        className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                                    >
+                                        <FaCommentDots />
+                                        Comment
+                                    </button>
+                                ) : (
+                                    <Link to='/login'
+                                        className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                                    >
+                                        <FaCommentDots />
+                                        Comment
+                                    </Link>
+                                )}
                             </div>
                         </form>
                     )}
@@ -188,8 +198,8 @@ const Details = () => {
                     <div className="space-y-6">
                         {cardData.comments?.length > 0 ? (
                             cardData.comments.map((comment, index) => (
-                                <div 
-                                    key={index} 
+                                <div
+                                    key={index}
                                     className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:bg-gray-100 transition-colors duration-200"
                                 >
                                     <div className="flex items-start gap-4">
