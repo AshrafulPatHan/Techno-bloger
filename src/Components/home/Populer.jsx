@@ -50,7 +50,7 @@ const PopulerPost = () => {
 
     // Fetch data
     useEffect(() => {
-        fetch(`${API}/limited-data`)
+        fetch(`${API}/featured-blogs`)
             .then((res) => res.json())
             .then((data) => {
                 setAll(data);
@@ -70,9 +70,9 @@ const PopulerPost = () => {
 
     return (
         <div>
-            <div className='flex flex-col items-center gap-4 mt-6 '>
+            <div className='flex flex-col items-center gap-4 mt-28 '>
                 <div className='bitter-Title'>
-                    <h2 className='text-4xl font-semibold text-center mb-3'>Recent Blog Posts</h2>
+                    <h2 className='text-4xl font-semibold text-center mb-3'>Populer Blog Posts</h2>
                 </div>
                 {/* Card */}
                 <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 lg:gap-6 mx-0 lg:mx-6 mt-7 '>
