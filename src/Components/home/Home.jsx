@@ -6,6 +6,7 @@ import Newsleer from './Newsleer';
 import AboutUs from './AboutUs';
 import Mape from './Mape';
 import Welcome from './Welcome';
+import PopulerPost from './Populer';
 
 
 
@@ -18,6 +19,7 @@ const Home = () => {
                 <Welcome />
                 <AboutUs />
                 <Recent />
+                <PopulerPost/>
                 <Mape />
                 <Newsleer />
             </main>

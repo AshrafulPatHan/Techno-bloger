@@ -1,35 +1,94 @@
-import { MdEmail } from "react-icons/md";
+import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
+import photo from "../../assets/animetion/data-any.gif";
 import { Link } from "react-router";
-
+import { motion } from "framer-motion";
 
 const AboutUs = () => {
     return (
-        <div className="flex flex-col items-center mt-6 mb-16 ">
-            <div className='bitter-Title'>
-                <h2 className="text-4xl font-bold mb-3">About US</h2>
-            </div>
-            <div className="flex flex-col items-center justify-center  ">
-                <div className='flex flex-col lg:flex-row items-start gap-3 border-2 text-lg border-blue-50 p-5 
-                    rounded-xl bg-slate-50 sm:w-[80%] w-[90%]  dark:bg-[#111010] '>
-                    <div>
-                        <img
-                            src="https://t4.ftcdn.net/jpg/03/08/69/75/360_F_308697506_9dsBYHXm9FwuW0qcEqimAEXUvzTwfzwe.jpg"
-                            className="w-full h-[250px] md:h-[350px] rounded-xl object-cover transition-transform 
-                            transform hover:scale-105"
-                            />
-                    </div>
-                    <div className='flex flex-col items-start p-2 gap-3'>
-                        <h2 className="text-2xl font-bold">Technobloger</h2>
-                        <p className=' text-base sm:text-lg font-medium w-[300px] sm:w-[400px] 
-                        lg:w-[500px] xl:w-[520px] 2xl:w-[720px]   '>Technobloger is your ultimate destination for the latest in technology. We provide comprehensive reviews, insightful articles, and up-to-date news on startups, gadgets, and tech trends. Whether you re a tech enthusiast, entrepreneur, or industry professional, technobloger keeps you informed and ahead in the fast-paced world of technology....</p>
-                        <Link to='/about' className="btn rounded-none bg-transparent relative w-32 origin-top transform border-2 border-sky-500 
-                        text-lg font-semibold text-sky-500 hover:bg-transparent hover:border-none transition-all duration-500
-                        before:absolute before:top-0 before:block before:h-0 before:w-full before:duration-500 hover:text-white hover:before:absolute hover:before:left-0 hover:before:-z-10 hover:before:h-full hover:before:bg-sky-500">About US
-                        </Link>
+        <section className="flex flex-col items-center mt-12 mb-20 px-4">
+            {/* Section Title */}
+            <motion.h2
+                initial={{ opacity: 0, y: -30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-4xl font-bold text-center mb-8 text-sky-600 dark:text-sky-400"
+            >
+                About Us
+            </motion.h2>
+
+            {/* Main Card */}
+            <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                viewport={{ once: true }}
+                className="flex flex-col lg:flex-row items-center justify-between gap-8 rounded-2xl p-6 sm:w-[85%] w-[95%] backdrop-blur-sm"
+            >
+                {/* Image Section */}
+                <div className="flex justify-center w-full lg:w-1/2">
+                    <motion.img
+                        src={photo}
+                        alt="About TechnoBloger"
+                        className="rounded-xl w-[300px] sm:w-[400px] md:w-[450px] lg:w-[480px] object-cover"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 200 }}
+                    />
+                </div>
+
+                {/* Text Section */}
+                <div className="flex flex-col justify-center items-start gap-4 text-left w-full lg:w-1/2">
+                    <h3 className="text-3xl font-bold text-gray-800 dark:text-gray-100">
+                        TechnoBloger
+                    </h3>
+
+                    <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg leading-relaxed">
+                        <span className="font-semibold">TechnoBloger</span> is your ultimate
+                        destination for everything tech. From in-depth gadget reviews to startup news,
+                        we deliver content that keeps you <span className="text-sky-500">inspired and informed</span>.
+                        Whether you’re a tech enthusiast, entrepreneur, or developer, TechnoBloger brings
+                        insights that help you stay ahead in the fast-evolving digital world.
+                    </p>
+
+                    {/* Button */}
+                    <Link
+                        to="/about"
+                        className="relative inline-block px-6 py-2 text-lg font-semibold text-sky-600 border-2 border-sky-500 rounded-full
+                        overflow-hidden transition-all duration-500 hover:text-white before:absolute before:top-0 before:left-0 
+                        before:w-0 before:h-full before:bg-sky-500 hover:before:w-full before:transition-all before:duration-500 before:-z-10"
+                    >
+                        Learn More
+                    </Link>
+
+                    {/* Social Icons */}
+                    <div className="flex items-center gap-5 text-2xl mt-2">
+                        <a
+                            href="https://facebook.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-500 hover:text-sky-600 transition-colors"
+                        >
+                            <FaFacebook />
+                        </a>
+                        <a
+                            href="https://twitter.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-500 hover:text-sky-600 transition-colors"
+                        >
+                            <FaTwitter />
+                        </a>
+                        <a
+                            href="https://youtube.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-500 hover:text-sky-600 transition-colors"
+                        >
+                            <FaYoutube />
+                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
+            </motion.div>
+        </section>
     );
 };
 
