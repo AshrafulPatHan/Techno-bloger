@@ -38,12 +38,17 @@ const Allblogs = () => {
     }, []);
 
     const handleWatchList = (All) => {
-        fetch(`${API}/watchList`, {
-            method: 'POST',
+        let Id = All._id;
+        let emaiL = user.email;
+        let SendData = { id:Id,email:emaiL } ;
+        console.log(SendData);
+
+        fetch(`${API}/post-watchlists`, {
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(All),
+            body: JSON.stringify(SendData),
         })
             .then((res) => res.json())
             .then((data) => {

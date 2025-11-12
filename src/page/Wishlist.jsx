@@ -9,6 +9,7 @@ import { AuthContext } from "../Components/auth/AuthProvider/AuthProvider";
 
 const Wishlist = () => {
     const [data, setData] = useState([]);
+    const [likes, setLikes] = useState([]);
     const [loading, setLoading] = useState(true);
     const { user } = useContext(AuthContext);
     const API = import.meta.env.VITE_API;
@@ -23,7 +24,7 @@ const Wishlist = () => {
     useEffect(() => {
         async function getWish() {
             try {
-                const response = await fetch(`${API}/watchListsdata`, {
+                const response = await fetch(`${API}/get-watchlists`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -41,6 +42,9 @@ const Wishlist = () => {
         }
         getWish();
     }, [user?.email]);
+
+
+
 
     const handleDelete = (id) => {
         swal({
@@ -104,7 +108,7 @@ const Wishlist = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 via-pink-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
             <Navbar />
-            
+
             {/* Hero Section */}
             <div className="bg-gradient-to-r from-pink-600 via-rose-600 to-purple-600 dark:from-pink-800 dark:via-rose-800 dark:to-purple-800 text-white py-16 md:py-20">
                 <div className="max-w-7xl mx-auto px-6">
@@ -152,79 +156,82 @@ const Wishlist = () => {
                 ) : (
                     /* Wishlist Grid */
                     <div className="grid grid-cols-1 gap-6">
-                        {data.map((item, index) => (
-                            <div
-                                key={item._id}
-                                className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group"
-                            >
-                                <div className="flex flex-col md:flex-row">
-                                    {/* Image Section */}
-                                    <div className="md:w-80 h-64 md:h-auto relative overflow-hidden bg-gray-200 dark:bg-gray-700 flex-shrink-0">
-                                        <img
-                                            src={item.Image}
-                                            alt={item.Title}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                        />
-                                        <div className="absolute top-4 left-4">
-                                            <span className="bg-gradient-to-r from-pink-600 to-purple-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
-                                                <FaTag className="text-xs" />
-                                                {item.category}
-                                            </span>
-                                        </div>
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                    </div>
-
-                                    {/* Content Section */}
-                                    <div className="flex-1 p-6 md:p-8 flex flex-col justify-between">
-                                        <div>
-                                            <div className="flex items-start justify-between mb-4">
-                                                <h3 className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors line-clamp-2">
-                                                    {item.Title}
-                                                </h3>
+                        {data.map((item, index) => {
+                            const blog = item.blog[0];
+                            return (
+                                <div
+                                    key={blog._id}
+                                    className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group"
+                                >
+                                    <div className="flex flex-col md:flex-row">
+                                        {/* Image Section */}
+                                        <div className="md:w-80 h-64 md:h-auto relative overflow-hidden bg-gray-200 dark:bg-gray-700 flex-shrink-0">
+                                            <img
+                                                src={blog.Image}
+                                                alt={blog.Title}
+                                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                            />
+                                            <div className="absolute top-4 left-4">
+                                                <span className="bg-gradient-to-r from-pink-600 to-purple-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
+                                                    <FaTag className="text-xs" />
+                                                    {blog.category}
+                                                </span>
                                             </div>
-
-                                            <p className="text-gray-600 dark:text-gray-400 mb-6 line-clamp-3">
-                                                {item.shortdescription || "No description available"}
-                                            </p>
-
-                                            {/* Stats */}
-                                            <div className="flex flex-wrap items-center gap-4 mb-6">
-                                                <div className="flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 px-3 py-1.5 rounded-lg">
-                                                    <FaBook className="text-blue-600 dark:text-blue-400 text-sm" />
-                                                    <span className="text-sm font-semibold text-blue-700 dark:text-blue-300">
-                                                        {item.longdescription ? item.longdescription.split(' ').length : 0} words
-                                                    </span>
-                                                </div>
-                                                <div className="flex items-center gap-2 bg-purple-50 dark:bg-purple-900/20 px-3 py-1.5 rounded-lg">
-                                                    <FaTag className="text-purple-600 dark:text-purple-400 text-sm" />
-                                                    <span className="text-sm font-semibold text-purple-700 dark:text-purple-300">
-                                                        {item.category}
-                                                    </span>
-                                                </div>
-                                            </div>
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                         </div>
 
-                                        {/* Action Buttons */}
-                                        <div className="flex flex-col sm:flex-row gap-3">
-                                            <button
-                                                onClick={() => handleExploreDetails(item)}
-                                                className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
-                                            >
-                                                <FaEye />
-                                                Read Article
-                                            </button>
-                                            <button
-                                                onClick={() => handleDelete(item._id)}
-                                                className="bg-red-50 hover:bg-red-600 dark:bg-red-900/20 dark:hover:bg-red-600 text-red-600 hover:text-white dark:text-red-400 dark:hover:text-white font-semibold py-3 px-6 rounded-xl border-2 border-red-200 dark:border-red-800 hover:border-red-600 transition-all duration-300 flex items-center justify-center gap-2"
-                                            >
-                                                <MdDelete className="text-xl" />
-                                                Remove
-                                            </button>
+                                        {/* Content Section */}
+                                        <div className="flex-1 p-6 md:p-8 flex flex-col justify-between">
+                                            <div>
+                                                <div className="flex items-start justify-between mb-4">
+                                                    <h3 className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors line-clamp-2">
+                                                        {blog.Title}
+                                                    </h3>
+                                                </div>
+
+                                                <p className="text-gray-600 dark:text-gray-400 mb-6 line-clamp-3">
+                                                    {blog.shortdescription || "No description available"}
+                                                </p>
+
+                                                {/* Stats */}
+                                                <div className="flex flex-wrap items-center gap-4 mb-6">
+                                                    <div className="flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 px-3 py-1.5 rounded-lg">
+                                                        <FaBook className="text-blue-600 dark:text-blue-400 text-sm" />
+                                                        <span className="text-sm font-semibold text-blue-700 dark:text-blue-300">
+                                                            {blog.longdescription ? blog.longdescription.split(' ').length : 0} words
+                                                        </span>
+                                                    </div>
+                                                    <div className="flex items-center gap-2 bg-purple-50 dark:bg-purple-900/20 px-3 py-1.5 rounded-lg">
+                                                        <FaTag className="text-purple-600 dark:text-purple-400 text-sm" />
+                                                        <span className="text-sm font-semibold text-purple-700 dark:text-purple-300">
+                                                            {blog.category}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {/* Action Buttons */}
+                                            <div className="flex flex-col sm:flex-row gap-3">
+                                                <button
+                                                    onClick={() => handleExploreDetails(blog)}
+                                                    className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+                                                >
+                                                    <FaEye />
+                                                    Read Article
+                                                </button>
+                                                <button
+                                                    onClick={() => handleDelete(blog._id)}
+                                                    className="bg-red-50 hover:bg-red-600 dark:bg-red-900/20 dark:hover:bg-red-600 text-red-600 hover:text-white dark:text-red-400 dark:hover:text-white font-semibold py-3 px-6 rounded-xl border-2 border-red-200 dark:border-red-800 hover:border-red-600 transition-all duration-300 flex items-center justify-center gap-2"
+                                                >
+                                                    <MdDelete className="text-xl" />
+                                                    Remove
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            )
+                        })}
                     </div>
                 )}
 
@@ -240,7 +247,7 @@ const Wishlist = () => {
                                     Keep Growing Your Collection
                                 </h3>
                                 <p className="text-gray-700 dark:text-gray-300 mb-4">
-                                    You have {data.length} {data.length === 1 ? 'article' : 'articles'} saved in your wishlist. 
+                                    You have {data.length} {data.length === 1 ? 'article' : 'articles'} saved in your wishlist.
                                     Continue exploring and add more interesting reads!
                                 </p>
                                 <button

@@ -67,7 +67,7 @@ const AboutUs = () => {
                             rel="noopener noreferrer"
                             className="text-gray-500 hover:text-sky-600 transition-colors"
                         >
-                            <FaFacebook />
+                            <FaFacebook className="text-blue-600" />
                         </a>
                         <a
                             href="https://twitter.com"
@@ -75,7 +75,7 @@ const AboutUs = () => {
                             rel="noopener noreferrer"
                             className="text-gray-500 hover:text-sky-600 transition-colors"
                         >
-                            <FaTwitter />
+                            <FaTwitter className="text-sky-400"/>
                         </a>
                         <a
                             href="https://youtube.com"
@@ -83,7 +83,7 @@ const AboutUs = () => {
                             rel="noopener noreferrer"
                             className="text-gray-500 hover:text-sky-600 transition-colors"
                         >
-                            <FaYoutube />
+                            <FaYoutube className="text-red-700"/>
                         </a>
                     </div>
                 </div>

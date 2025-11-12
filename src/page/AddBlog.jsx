@@ -41,7 +41,7 @@ const AddBlog = () => {
             date: new Date()
         };
 
-        fetch(`${API}/postdata`, {
+        fetch(`${API}/postblog`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
