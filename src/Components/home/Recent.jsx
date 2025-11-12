@@ -49,7 +49,7 @@ const Recent = () => {
 
     // Fetch data
     useEffect(() => {
-        fetch(`${API}/limited-data`)
+        fetch(`${API}/latest-blog`)
             .then((res) => res.json())
             .then((data) => {
                 setAll(data);

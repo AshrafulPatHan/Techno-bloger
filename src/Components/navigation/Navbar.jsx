@@ -114,7 +114,7 @@ const Navbar = () => {
                         {/* company name */}
                         <div className='flex flex-row items-center'>
                             <img src={Logo} alt="image" className='w-[50px] ' />
-                            <p className="text-sm font-bold sm:text-xl flex md:font-bold text-black dark:text-white">Technobloger</p>
+                            <p className="text-sm font-bold sm:text-xl flex md:font-bold text-black dark:text-white">Techno-blogger</p>
                         </div>
                     </div>
                     {/* navigation */}
@@ -122,24 +122,24 @@ const Navbar = () => {
                         {user ? (
                             <div className=' flex lg:flex-col xl:flex-row items-center xl:gap-4'>
                                 <div className='flex flex-row items-center gap-6 xl:gap-4 '>
-                                    <Link to='/' className=' text-xl text-blue-600 rounded-md hover:text-blue-500 transition-all duration-500 font-bold'>
+                                    <Link to='/' className=' text-xl  rounded-md hover:text-blue-500 transition-all duration-500 font-bold'>
                                         Home
                                     </Link>
-                                    <Link to='/allblogs' className=' text-xl text-blue-600 rounded-md hover:text-blue-500 transition-all duration-500 font-bold'>
+                                    <Link to='/allblogs' className=' text-xl  rounded-md hover:text-blue-500 transition-all duration-500 font-bold'>
                                         All blogs
                                     </Link>
-                                    <Link to='/featuredblogs' className=' text-xl text-blue-600 rounded-md hover:text-blue-500 transition-all duration-500 font-bold'>
+                                    <Link to='/featuredblogs' className=' text-xl  rounded-md hover:text-blue-500 transition-all duration-500 font-bold'>
                                         Featured Blogs
                                     </Link>
                                 </div>
                                 <div className='flex flex-row items-center gap-6 xl:gap-4'>
-                                    <Link to='/addblog' className='text-xl text-blue-600 rounded-md hover:text-blue-500 transition-all duration-500 font-bold'>
+                                    <Link to='/addblog' className='text-xl  rounded-md hover:text-blue-500 transition-all duration-500 font-bold'>
                                         Add Blog
                                     </Link>
-                                    <Link to='/wishlist' className='text-xl text-blue-600 rounded-md hover:text-blue-500 transition-all duration-500 font-bold'>
+                                    <Link to='/wishlist' className='text-xl  rounded-md hover:text-blue-500 transition-all duration-500 font-bold'>
                                         Wishlist
                                     </Link>
-                                    <Link to='/dashboard' className='text-xl text-blue-600 rounded-md hover:text-blue-500 transition-all duration-500 font-bold'>
+                                    <Link to='/dashboard' className='text-xl  rounded-md hover:text-blue-500 transition-all duration-500 font-bold'>
                                         Dashboard
                                     </Link>
                                 </div>
@@ -147,21 +147,21 @@ const Navbar = () => {
                         ) : (
                             <div className="flex flex-row items-center gap-4 px-1">
                                 <div>
-                                    <Link to='/' className='text-xl text-blue-600 font-bold hover:text-blue-500 transition-all duration-500'>Home</Link>
+                                    <Link to='/' className='text-xl  font-bold hover:text-blue-500 transition-all duration-500'>Home</Link>
                                 </div>
                                 <div>
-                                    <Link to='/allblogs' className='text-xl text-blue-600 font-bold hover:text-blue-500 transition-all duration-500'>All blogs</Link>
+                                    <Link to='/allblogs' className='text-xl  font-bold hover:text-blue-500 transition-all duration-500'>All blogs</Link>
                                 </div>
                                 <div>
-                                    <Link to='/featuredblogs' className='text-xl text-blue-600 font-bold hover:text-blue-500 transition-all duration-500'>Featured Blogs</Link>
+                                    <Link to='/featuredblogs' className='text-xl  font-bold hover:text-blue-500 transition-all duration-500'>Featured Blogs</Link>
                                 </div>
-                                <Link to='/addblog' className='text-xl text-blue-600 font-bold hover:text-blue-500 transition-all duration-500'>
+                                <Link to='/addblog' className='text-xl  font-bold hover:text-blue-500 transition-all duration-500'>
                                     Add Blog
                                 </Link>
-                                <Link to='/wishlist' className='text-xl text-blue-600 font-bold hover:text-blue-500 transition-all duration-500'>
+                                <Link to='/wishlist' className='text-xl  font-bold hover:text-blue-500 transition-all duration-500'>
                                     Wishlist
                                 </Link>
-                                <Link to='/dashboard' className='text-xl text-blue-600 font-bold hover:text-blue-500 transition-all duration-500'>
+                                <Link to='/dashboard' className='text-xl  font-bold hover:text-blue-500 transition-all duration-500'>
                                     Dashboard
                                 </Link>
                             </div>

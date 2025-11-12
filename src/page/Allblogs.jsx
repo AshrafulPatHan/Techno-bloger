@@ -24,7 +24,7 @@ const Allblogs = () => {
     const API = import.meta.env.VITE_API;
 
     useEffect(() => {
-        fetch(`${API}/alldata`)
+        fetch(`${API}/all-blog`)
             .then((res) => res.json())
             .then((data) => {
                 setAll(data);
