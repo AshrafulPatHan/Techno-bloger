@@ -73,7 +73,7 @@ const Registration = () => {
                         console.log('Profile updated successfully');
                         const userData = { name, email, photoURL };
                         // -----------send to server
-                        fetch(`${API}/userData`, {
+                        fetch(`${API}/user-data`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',

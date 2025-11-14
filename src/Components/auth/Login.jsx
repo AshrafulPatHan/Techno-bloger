@@ -40,6 +40,11 @@ const Login = () => {
         signInWithPopup(auth, provider)
             .then((result) => {
                 console.log("Google login successful:", result.user);
+                const _userData = {
+                    gmail: result.user.email,
+                    _userName: result.user.displayName,
+                    _userphoto: result.user.photoURL,
+                };
                 toast.success('Google login successful');
                 navigate('/')
                 setLoading(false)//-----------------
