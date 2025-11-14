@@ -18,6 +18,8 @@ const Login = () => {
     const navigate = useNavigate();
     const emailRef = useRef();
 
+    const API = import.meta.env.VITE_API;
+
     const handleLogin = (event) => {
         event.preventDefault();
         const email = event.target.email.value;
@@ -45,6 +47,33 @@ const Login = () => {
                     _userName: result.user.displayName,
                     _userphoto: result.user.photoURL,
                 };
+
+                // send user data into server
+                async function sendGoogleUser(_userData) {
+                    try {
+                        const response = await fetch(`${API}/google-auth`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(_userData),
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+
+                        const result = await response.json();
+                        console.log('Success:', result);
+                        // Handle successful submission (e.g., clear form, show success message)
+                    } catch (error) {
+                        console.error('Error submitting form:', error);
+                        // Handle errors (e.g., show error message to user)
+                    }
+                } sendGoogleUser(_userData)
+
+
+                // if all is wale
                 toast.success('Google login successful');
                 navigate('/')
                 setLoading(false)//-----------------

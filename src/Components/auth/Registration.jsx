@@ -54,9 +54,7 @@ const Registration = () => {
             return;
         }
 
-
         console.log(name, email, photoURL, password);
-
 
         // Creating a user with Firebase Authentication
         createUserWithEmailAndPassword(auth, email, password)
@@ -97,10 +95,7 @@ const Registration = () => {
             .catch((error) => {
                 console.error('Error creating user:', error.message);
             });
-
-
-
-
+        // end
     };
 
 
