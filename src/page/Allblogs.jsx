@@ -96,7 +96,7 @@ const Allblogs = () => {
             <Navbar />
 
             {/* Hero Section */}
-            <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-purple-700 text-white py-16 md:py-20">
+            <div className="blog-background text-white py-16 md:py-20">
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}

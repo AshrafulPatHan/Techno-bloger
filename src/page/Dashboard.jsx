@@ -163,7 +163,9 @@ export default function Dashboard() {
             <div
                 className="relative pt-20 pb-32 bg-cover bg-center"
                 style={{
-                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${dashboardData.baner || 'https://i.ibb.co.com/MVwBCf5/pexels-morningtrain-18104.jpg'})`,
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${dashboardData.baner || 'https://i.ibb.co.com/wZMqtsGP/pexels-pixabay-39896.jpg'})`,
+                    backgroundPosition: 'center',
+                    backgroundSize: 'cover',
                 }}
             >
                 <div className="max-w-7xl mx-auto px-6">
@@ -181,7 +183,13 @@ export default function Dashboard() {
                     <div className="lg:col-span-2">
                         <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden">
                             {/* Profile Header with Image */}
-                            <div className="relative h-48 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
+                            <div className="relative h-48 "
+                                style={{
+                                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url( ${'https://i.ibb.co.com/MVwBCf5/pexels-morningtrain-18104.jpg'})`,
+                                    height: '290px',
+                                    backgroundSize: 'cover',
+                                    backgroundRepeat: 'no-repeat',
+                                }}>
                                 <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2">
                                     <div className="relative group">
                                         <div className="w-32 h-32 rounded-full border-4 border-white dark:border-gray-800 shadow-xl overflow-hidden bg-white">

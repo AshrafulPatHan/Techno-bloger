@@ -70,7 +70,7 @@ const AddBlog = () => {
             <Navbar />
             
             {/* Hero Section */}
-            <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-purple-700 dark:from-blue-800 dark:via-purple-800 dark:to-indigo-900 text-white py-16 md:py-20">
+            <div className="add-blog-background text-white py-16 md:py-20">
                 <div className="max-w-7xl mx-auto px-6 text-center">
                     <div className="inline-block mb-4">
                         <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">

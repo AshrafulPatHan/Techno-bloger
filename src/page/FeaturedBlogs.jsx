@@ -213,7 +213,7 @@ const FeaturedBlogs = () => {
             <Navbar />
 
             {/* Hero Section */}
-            <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-purple-700 text-white py-16 md:py-20">
+            <div className="feature-background  text-white py-16 md:py-20">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="flex items-center justify-center gap-3 mb-4">
                         <FaStar className="text-4xl text-yellow-300 animate-pulse" />

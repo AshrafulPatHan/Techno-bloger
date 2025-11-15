@@ -4,12 +4,48 @@
 
 
 /* hero section */
-.hero-background{
-    background-image: url('./assets/background.avif');
-    width: 100%;
-    background-size: 100vw auto;
-    background-position: bottom;
-    background-repeat: no-repeat;
+.hero-background {
+  background-image: url('./assets/background.avif');
+  width: 100%;
+  background-size: 100vw auto;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+/* feature page */
+.feature-background {
+  background-image: url('https://i.ibb.co.com/kVLH2gtV/pexels-pixabay-41006.jpg');
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* blog page */
+.blog-background {
+  background-image: url('https://i.ibb.co.com/gLtBqypP/pexels-markusspiske-1089438.jpg');
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* add blog page */
+.add-blog-background {
+  background-image: url('https://i.ibb.co.com/Tx0b9yBh/pexels-joshsorenson-1714208.jpg');
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* wishlist page */
+.wishlist-background {
+  background-image: url('https://i.ibb.co.com/wFbPQWN1/pexels-pixabay-2150.jpg');
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 
@@ -18,7 +54,7 @@
 .quicksand-font {
   font-family: "Quicksand", serif;
   font-optical-sizing: auto;
-  font-weight:auto;
+  font-weight: auto;
   font-style: normal;
 }
 
@@ -29,7 +65,7 @@
   font-optical-sizing: auto;
   font-weight: normal;
   font-style: normal;
-  font-variation-settings:"wdth" 100;
+  font-variation-settings: "wdth" 100;
 }
 
 /* Title font */
@@ -43,17 +79,15 @@
 
 /* dag gok to */
 .playwrite-au-qld-guides-regular {
-    font-family: "Playwrite AU QLD Guides", serif;
-    font-weight: 400;
-    font-style: normal;
-    }
+  font-family: "Playwrite AU QLD Guides", serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 /* ------- pachano or// Styles */
 
-    .great-vibes-regular {
-    font-family: "Great Vibes", serif;
-    font-weight: 400;
-    font-style: normal;
-    }
-
-
+.great-vibes-regular {
+  font-family: "Great Vibes", serif;
+  font-weight: 400;
+  font-style: normal;
+}
