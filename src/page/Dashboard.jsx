@@ -163,7 +163,7 @@ export default function Dashboard() {
             <div
                 className="relative pt-20 pb-32 bg-cover bg-center"
                 style={{
-                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${dashboardData.baner || 'https://i.ibb.co.com/wZMqtsGP/pexels-pixabay-39896.jpg'})`,
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${dashboardData.baner || 'https://i.ibb.co.com/Tx0b9yBh/pexels-joshsorenson-1714208.jpg'})`,
                     backgroundPosition: 'center',
                     backgroundSize: 'cover',
                 }}
@@ -185,7 +185,7 @@ export default function Dashboard() {
                             {/* Profile Header with Image */}
                             <div className="relative h-48 "
                                 style={{
-                                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url( ${'https://i.ibb.co.com/MVwBCf5/pexels-morningtrain-18104.jpg'})`,
+                                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url( ${'https://i.ibb.co.com/Nd1kG9FV/pexels-pixabay-2159.jpg'})`,
                                     height: '290px',
                                     backgroundSize: 'cover',
                                     backgroundRepeat: 'no-repeat',
