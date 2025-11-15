@@ -44,9 +44,9 @@ const Welcome = () => {
             <div className='flex flex-col xl:flex-row items-center xl:items-start justify-between'>
                 <div className='flex flex-col text-center xl:text-start items-center xl:items-start gap-4 '>
                     <div className='flex flex-col items-center lg:items-start gap-2'>
-                        <div className='bitter-Title'>
-                            <h2 className='text-3xl sm:text-3xl lg:text-5xl  font-semibold'>Welcome to our website</h2>
-                            <h3 className=' text-xl sm:text-2xl mt-2 font-semibold'>Explore and deep drive in technology</h3>
+                        <div className=''>
+                            <h2 className='text-3xl sm:text-3xl lg:text-4xl  font-semibold'>Welcome to our website</h2>
+                            {/* <h3 className=' text-xl sm:text-2xl mt-2 font-semibold'>Explore and deep drive in technology</h3> */}
                         </div>
                         <p className=' text-base sm:text-lg font-medium w-[300px] lg:w-[500px] xl:w-[620px]  '>Welcome to technobloger, your go-to source for the latest in technology. We provide in-depth reviews, insightful articles, and breaking news on startups, gadgets, and tech trends. Whether you re a tech enthusiast, entrepreneur, or industry professional, technobloger keeps your informed and ahead in the tech world.</p>
                     </div>

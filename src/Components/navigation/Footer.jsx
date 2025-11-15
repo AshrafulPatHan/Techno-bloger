@@ -39,7 +39,7 @@ const Footer = () => {
                             <h3 className="text-2xl font-bold text-white">TechnoBloger</h3>
                         </div>
                         <p className="text-gray-400 leading-relaxed mb-4">
-                            Providing reliable blogs and quality content since 2020. Your trusted source for technology insights.
+                            Providing reliable blogs and quality content since 2024. Your trusted source for technology insights.
                         </p>
                         <div className="flex gap-3">
                             <a 

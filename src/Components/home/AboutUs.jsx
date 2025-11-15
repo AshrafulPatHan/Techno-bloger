@@ -45,7 +45,7 @@ const AboutUs = () => {
                         <span className="font-semibold">TechnoBloger</span> is your ultimate
                         destination for everything tech. From in-depth gadget reviews to startup news,
                         we deliver content that keeps you <span className="text-sky-500">inspired and informed</span>.
-                        Whether you’re a tech enthusiast, entrepreneur, or developer, TechnoBloger brings
+                        Whether you're a tech enthusiast, entrepreneur, or developer, TechnoBloger brings
                         insights that help you stay ahead in the fast-evolving digital world.
                     </p>
 
