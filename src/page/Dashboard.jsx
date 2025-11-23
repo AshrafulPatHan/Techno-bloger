@@ -23,15 +23,18 @@ export default function Dashboard() {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
+                const SendData = { email: user.email }
                 // Replace with your actual API endpoint
                 const response = await fetch(`${API}/get-user`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(user.email),
+                    body: JSON.stringify(SendData),
                 });
                 const data = await response.json();
+                console.log("data is ---", data);
+
                 setUserData(data);
                 setLoading(false);
             } catch (error) {
@@ -40,10 +43,13 @@ export default function Dashboard() {
             }
         };
 
+
+
         if (user?.email) {
             fetchUserData();
         }
     }, [user]);
+    console.log("user data is :", userData);
 
     // Get dashboard data
     const dashboardData = userData?.dashboard?.[0] || {};
@@ -107,7 +113,7 @@ export default function Dashboard() {
             });
 
             // Update API data
-            const response = await fetch(`https://your-api-endpoint.com/users/${userData._id}`, {
+            const response = await fetch(`${API}/${userData._id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -161,7 +167,7 @@ export default function Dashboard() {
 
             {/* Hero Section with Custom Banner */}
             <div
-                className="relative pt-20 pb-32 bg-cover bg-center"
+                className="relative pt-20 pb-[200px] bg-cover bg-center"
                 style={{
                     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${dashboardData.baner || 'https://i.ibb.co.com/Tx0b9yBh/pexels-joshsorenson-1714208.jpg'})`,
                     backgroundPosition: 'center',
@@ -177,29 +183,23 @@ export default function Dashboard() {
             </div>
 
             {/* Profile Card Section */}
-            <div className="max-w-7xl mx-auto px-6 -mt-20 pb-16">
+            <div className="max-w-7xl mx-auto px-1 md:px-6 -mt-20 pb-16">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Profile Card */}
                     <div className="lg:col-span-2">
                         <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden">
                             {/* Profile Header with Image */}
-                            <div className="relative h-48 "
-                                style={{
-                                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url( ${'https://i.ibb.co.com/Nd1kG9FV/pexels-pixabay-2159.jpg'})`,
-                                    height: '290px',
-                                    backgroundSize: 'cover',
-                                    backgroundRepeat: 'no-repeat',
-                                }}>
+                            <div className="relative h-48 ">
                                 <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2">
                                     <div className="relative group">
-                                        <div className="w-32 h-32 rounded-full border-4 border-white dark:border-gray-800 shadow-xl overflow-hidden bg-white">
+                                        <div className="w-[250px] h-[250px] rounded-full border-4 border-white dark:border-gray-800 shadow-xl overflow-hidden bg-white">
                                             <img
                                                 src={userData?.photoURL || user?.photoURL || "https://via.placeholder.com/150"}
                                                 alt="Profile"
                                                 className="w-full h-full object-cover"
                                             />
                                         </div>
-                                        <button className="absolute bottom-0 right-0 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white p-3 rounded-full shadow-lg transform transition-all duration-300 hover:scale-110">
+                                        <button className="absolute bottom-3 right-7 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white p-3 rounded-full shadow-lg transform transition-all duration-300 hover:scale-110">
                                             <FaCamera className="text-sm" />
                                         </button>
                                     </div>
@@ -230,27 +230,30 @@ export default function Dashboard() {
                                     )}
                                 </div>
 
-                                {/* Stats Grid */}
-                                <div className="grid grid-cols-3 gap-4 mb-8">
-                                    <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-2xl p-6 text-center border border-blue-200 dark:border-blue-800">
-                                        <p className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">
-                                            {userData?.watchlists?.length || 0}
-                                        </p>
-                                        <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">Watchlists</p>
-                                    </div>
-                                    <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-2xl p-6 text-center border border-purple-200 dark:border-purple-800">
-                                        <p className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">
-                                            {dashboardData.following || 0}
-                                        </p>
-                                        <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">Following</p>
-                                    </div>
-                                    <div className="bg-gradient-to-br from-pink-50 to-pink-100 dark:from-pink-900/20 dark:to-pink-800/20 rounded-2xl p-6 text-center border border-pink-200 dark:border-pink-800">
-                                        <p className="text-3xl font-bold text-pink-600 dark:text-pink-400 mb-1">
-                                            {dashboardData.followers || 0}
-                                        </p>
-                                        <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">Followers</p>
+                                <div className="flex flex-col items-center">
+                                    {/* Stats Grid */}
+                                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 mx-auto">
+                                        <div className=" w-56 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-2xl p-6 text-center border border-blue-200 dark:border-blue-800">
+                                            <p className="text-lg sm:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+                                                {userData?.watchlists?.length || 0}
+                                            </p>
+                                            <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">Watchlists</p>
+                                        </div>
+                                        <div className="w-56 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-2xl p-6 text-center border border-purple-200 dark:border-purple-800">
+                                            <p className="text-lg sm:text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">
+                                                {dashboardData.following || 0}
+                                            </p>
+                                            <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">Following</p>
+                                        </div>
+                                        <div className="w-56 bg-gradient-to-br from-pink-50 to-pink-100 dark:from-pink-900/20 dark:to-pink-800/20 rounded-2xl p-6 text-center border border-pink-200 dark:border-pink-800">
+                                            <p className="text-lg sm:text-3xl font-bold text-pink-600 dark:text-pink-400 mb-1">
+                                                {dashboardData.followers || 0}
+                                            </p>
+                                            <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">Followers</p>
+                                        </div>
                                     </div>
                                 </div>
+
 
                                 {/* Social Links */}
                                 <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
@@ -275,16 +278,7 @@ export default function Dashboard() {
                                     </div>
                                 </div>
 
-                                {/* Edit Profile Button */}
-                                <div className="mt-8">
-                                    <button
-                                        onClick={() => setIsEditing(!isEditing)}
-                                        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
-                                    >
-                                        <FaEdit />
-                                        {isEditing ? 'Cancel Editing' : 'Edit Profile'}
-                                    </button>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -292,13 +286,16 @@ export default function Dashboard() {
                     {/* Edit Profile Form */}
                     <div className="lg:col-span-1">
                         <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 sticky top-6">
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-3 rounded-xl">
-                                    <FaEdit className="text-white text-xl" />
-                                </div>
-                                <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
-                                    Update Profile
-                                </h2>
+
+                            {/* Edit Profile Button */}
+                            <div className="mb-6">
+                                <button
+                                    onClick={() => setIsEditing(!isEditing)}
+                                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+                                >
+                                    <FaEdit />
+                                    {isEditing ? 'Cancel Editing' : 'Edit Profile'}
+                                </button>
                             </div>
 
                             <form onSubmit={handleUpdateProfile} className="space-y-6 max-h-[600px] overflow-y-auto pr-2">
