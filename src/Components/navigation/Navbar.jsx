@@ -66,7 +66,7 @@ const Navbar = () => {
 
 
     return (
-        <div className='sticky top-0 z-50 '>
+        <div className='sticky top-0 z-50 max-w-screen overflow-hidden '>
             <div className={` transition-colors duration-300  ${scrolled ? "backdrop-blur-[12px] border-b-2 border-b-[#0000000e] " : "bg-white dark:bg-gray-900 "
                 }`} >
                 <div className="navbar max-w-[1500px] mx-auto ">
