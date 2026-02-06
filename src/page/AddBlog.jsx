@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import Navbar from '../Components/navigation/Navbar';
 import Footer from '../Components/navigation/Footer';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import { AuthContext } from '../Components/auth/AuthProvider/AuthProvider';
-import { FaPen, FaImage, FaUser, FaEnvelope, FaTag, FaAlignLeft, FaFileAlt } from 'react-icons/fa';
+import { FaPen, FaImage, FaUser, FaTag, FaFileAlt } from 'react-icons/fa';
 import { MdTitle, MdDescription } from 'react-icons/md';
 
 const AddBlog = () => {
@@ -14,13 +14,43 @@ const AddBlog = () => {
     const navigate = useNavigate();
     const API = import.meta.env.VITE_API;
 
+    const [Photo, setPhoto] = useState("");
+
+    // mange file submit
+    const handleFileSelect = async (file) => {
+        const formData = new FormData();
+        formData.append("image", file);
+
+        try {
+            const response = await fetch(
+                //                 `https://api.imgbb.com/1/upload?expiration=600&key=${process.env.NEXT_PUBLIC_IMAGEBB_API_KEY}`,
+                `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_PUBLIC_IMAGEBB_API_KEY}`,
+                {
+                    method: "POST",
+                    body: formData
+                }
+            );
+            const data = await response.json();
+            if (data.success) {
+                const imageUrl = data.data.url;
+                setPhoto(imageUrl);
+                toast.success("Image uploaded successfully!");
+            } else {
+                toast.error("Failed to upload image");
+            }
+        } catch (error) {
+            console.error("Image upload error:", error);
+            toast.error("Image upload error");
+        }
+    };
+
     const handleAddReview = event => {
         event.preventDefault();
         const form = event.target;
 
         const Title = form.Title.value;
         const shortdescription = form.shortdescription.value;
-        const Image = form.Image.value;
+        // const Image = form.Image.value;
         const longdescription = form.longdescription.value;
         const username = user.displayName;
         const userEmail = user.email;
@@ -30,16 +60,18 @@ const AddBlog = () => {
             return;
         }
 
-        const allData = { 
-            Title, 
-            shortdescription, 
-            Image, 
-            longdescription, 
-            category, 
-            username, 
+        const allData = {
+            Title,
+            shortdescription,
+            Image: Photo,
+            longdescription,
+            category,
+            username,
             userEmail,
             date: new Date()
         };
+        console.log(allData);
+
 
         fetch(`${API}/postblog`, {
             method: 'POST',
@@ -49,6 +81,7 @@ const AddBlog = () => {
             body: JSON.stringify(allData),
         })
             .then((res) => res.json())
+            // eslint-disable-next-line no-unused-vars
             .then((data) => {
                 toast.success("Blog added successfully!");
                 navigate('/');
@@ -68,7 +101,7 @@ const AddBlog = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
             <Navbar />
-            
+
             {/* Hero Section */}
             <div className="add-blog-background text-white py-16 md:py-20">
                 <div className="max-w-7xl mx-auto px-6 text-center">
@@ -154,12 +187,30 @@ const AddBlog = () => {
                                         <FaImage className="text-blue-600 dark:text-blue-400 text-xl" />
                                         Cover Image URL
                                     </label>
-                                    <input
+                                    {/* <input
                                         type="url"
                                         name="Image"
                                         placeholder="https://example.com/image.jpg"
                                         className="w-full px-5 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none transition-all text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
-                                    />
+                                    /> */}
+                                    <fieldset>
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            onChange={(e) => {
+                                                const file = e.target.files?.[0];
+                                                if (file) {
+                                                    handleFileSelect(file);
+                                                }
+                                            }}
+                                            className="block w-[97%] text-sm text-white
+                               file:mr-4 file:py-2 file:px-4
+                               file:rounded file:border-0 file:text-sm file:font-semibold
+                               file:bg-pink-50 file:text-pink-700 hover:file:bg-pink-100
+                               border border-white/50 rounded-lg bg-white/10"
+                                        />
+                                        <label className="text-xs text-white/70">Max size 32MB</label>
+                                    </fieldset>
                                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 ml-1">
                                         Recommended size: 1200x630px
                                     </p>
@@ -183,10 +234,10 @@ const AddBlog = () => {
                                             <span className={category ? 'text-gray-800 dark:text-gray-100' : 'text-gray-400 dark:text-gray-500'}>
                                                 {category || 'Select a category'}
                                             </span>
-                                            <svg 
-                                                className={`w-5 h-5 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} 
-                                                fill="none" 
-                                                stroke="currentColor" 
+                                            <svg
+                                                className={`w-5 h-5 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
+                                                fill="none"
+                                                stroke="currentColor"
                                                 viewBox="0 0 24 24"
                                             >
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
@@ -232,7 +283,7 @@ const AddBlog = () => {
                                         <FaUser className="text-blue-600 dark:text-blue-400" />
                                         Author Information
                                     </h3>
-                                    
+
                                     <div className="space-y-4">
                                         <div>
                                             <label className="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-2 block">
@@ -244,7 +295,7 @@ const AddBlog = () => {
                                                 </p>
                                             </div>
                                         </div>
-                                        
+
                                         <div>
                                             <label className="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-2 block">
                                                 Email
@@ -307,7 +358,7 @@ const AddBlog = () => {
 
 export default AddBlog;
 
-// old code 
+// old code
 
 // import React, { useContext } from 'react';
 // import Navbar from '../Components/navigation/Navbar';

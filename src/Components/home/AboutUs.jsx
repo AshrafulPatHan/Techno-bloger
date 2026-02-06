@@ -1,7 +1,9 @@
 import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
-import photo from "../../assets/animetion/data-any.gif";
+// import AnimationL from "../../assets/animetion/about-us.json";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
+// import { Player } from '@lottiefiles/react-lottie-player';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 
 const AboutUs = () => {
     return (
@@ -26,13 +28,20 @@ const AboutUs = () => {
             >
                 {/* Image Section */}
                 <div className="flex justify-center w-full lg:w-1/2">
-                    <motion.img
-                        src={photo}
-                        alt="About TechnoBloger"
-                        className="rounded-xl w-[300px] sm:w-[400px] md:w-[450px] lg:w-[480px] object-cover"
+
+                    <motion.div
                         whileHover={{ scale: 1.05 }}
-                        transition={{ type: "spring", stiffness: 200 }}
-                    />
+                        whileTap={{ scale: 0.8 }}
+                        transition={{ duration: 0.4 }}
+                    >
+                        <DotLottieReact
+                            src="https://lottie.host/cfd698db-417a-4d69-ac4d-54962fa24bff/z2cIjFDYlr.lottie"
+                            loop
+                            autoplay
+                            className="xl:w-[600px] h-[300px] sm:h-[400px] lg:w-[400px] sm:w-[400px] w-[90vw] rounded-full justify-center object-cover "
+                        />
+                        {/* <Image src={Photo} alt="photo" className="lg:w-[400px] sm:w-[400px] w-[90vw] rounded-full justify-center object-cover " /> */}
+                    </motion.div>
                 </div>
 
                 {/* Text Section */}
@@ -75,7 +84,7 @@ const AboutUs = () => {
                             rel="noopener noreferrer"
                             className="text-gray-500 hover:text-sky-600 transition-colors"
                         >
-                            <FaTwitter className="text-sky-400"/>
+                            <FaTwitter className="text-sky-400" />
                         </a>
                         <a
                             href="https://youtube.com"
@@ -83,7 +92,7 @@ const AboutUs = () => {
                             rel="noopener noreferrer"
                             className="text-gray-500 hover:text-sky-600 transition-colors"
                         >
-                            <FaYoutube className="text-red-700"/>
+                            <FaYoutube className="text-red-700" />
                         </a>
                     </div>
                 </div>
