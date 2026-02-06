@@ -49,7 +49,7 @@ const Details = () => {
             _id: documentId,
         };
 
-        fetch(`${API}/comant`, {
+        fetch(`${API}/comment`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",

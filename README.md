@@ -27,6 +27,7 @@
   - React-Data-Table (for interactive tables)
   - Framer-Motion (for add animation)
 - **🗄️Backend**:
+  <!-- vercel server : https://techno-bloger-server.vercel.app/ -->
   - Node.js with Express
   - MongoDB (for data storage)
   - JWT (for user authentication)

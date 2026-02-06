@@ -4,7 +4,7 @@ const Mape = () => {
     return (
         <div className='flex flex-col items-center mt-10'>
             <div>
-                <div className='bitter-Title'>
+                <div className=''>
                     <h2 className='text-4xl font-bold text-center mt-5 mb-6 '>Our Office Location</h2>
                 </div>
                 <div className='flex flex-col items-center'>

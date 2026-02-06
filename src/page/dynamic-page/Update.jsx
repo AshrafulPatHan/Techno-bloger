@@ -48,7 +48,7 @@ const Update = () => {
         const { _id: id } = cardData; // Get ID from cardData
 
         // send data to the server
-        fetch(`${API}/update/${id}`, {
+        fetch(`${API}/blog/${id}`, {
 
             method: 'PUT',
             headers: {

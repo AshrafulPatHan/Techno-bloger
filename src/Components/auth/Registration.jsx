@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import Navbar from '../navigation/Navbar';
-import Footer from '../navigation/Footer';
+import { useState } from 'react';
+// import Navbar from '../navigation/Navbar';
+// import Footer from '../navigation/Footer';
 import { FaEye } from 'react-icons/fa';
 import { FaEyeLowVision } from 'react-icons/fa6';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+// import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import auth from '../auth/Firebase/Firebase.init';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
@@ -17,6 +17,37 @@ const Registration = () => {
     const navigate = useNavigate();
     // get api link from env file
     const API = import.meta.env.VITE_API;
+
+
+    const [Photo, setPhoto] = useState("");
+
+    // mange file submit
+    const handleFileSelect = async (file) => {
+        const formData = new FormData();
+        formData.append("image", file);
+
+        try {
+            const response = await fetch(
+                //                 `https://api.imgbb.com/1/upload?expiration=600&key=${process.env.NEXT_PUBLIC_IMAGEBB_API_KEY}`,
+                `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_PUBLIC_IMAGEBB_API_KEY}`,
+                {
+                    method: "POST",
+                    body: formData
+                }
+            );
+            const data = await response.json();
+            if (data.success) {
+                const imageUrl = data.data.url;
+                setPhoto(imageUrl);
+                toast.success("Image uploaded successfully!");
+            } else {
+                toast.error("Failed to upload image");
+            }
+        } catch (error) {
+            console.error("Image upload error:", error);
+            toast.error("Image upload error");
+        }
+    };
 
 
     const validatePassword = (password) => {
@@ -47,16 +78,13 @@ const Registration = () => {
 
         const name = event.target.name.value;
         const email = event.target.email.value;
-        const photoURL = event.target.PhotoURL.value;
         const password = event.target.password.value;
 
         if (!validatePassword(password)) {
             return;
         }
 
-
-        console.log(name, email, photoURL, password);
-
+        console.log(name, email, Photo, password);
 
         // Creating a user with Firebase Authentication
         createUserWithEmailAndPassword(auth, email, password)
@@ -67,13 +95,13 @@ const Registration = () => {
                 // Updating user's profile with name and photoURL
                 updateProfile(result.user, {
                     displayName: name,
-                    photoURL: photoURL,
+                    photoURL: Photo,
                 })
                     .then(() => {
-                        console.log('Profile updated successfully');
-                        const userData = { name, email, photoURL };
+                        console.log('user registration successfully');
+                        const userData = { name, email, photoURL:Photo };
                         // -----------send to server
-                        fetch(`${API}/userData`, {
+                        fetch(`${API}/user-data`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
@@ -86,21 +114,18 @@ const Registration = () => {
                             })
                             .catch((error) => {
                                 console.error('Error:', error);
-                                toast.error("Error adding Blog");
+                                toast.error("Error registration ");
                             });
                     })
                     .catch((error) => {
-                        console.error('Error updating profile:', error.message);
+                        console.error('Error registration profile:', error.message);
                         toast('soothing is wrang')
                     });
             })
             .catch((error) => {
                 console.error('Error creating user:', error.message);
             });
-
-
-
-
+        // end
     };
 
 
@@ -150,13 +175,24 @@ const Registration = () => {
                                                 <label className="label">
                                                     <span className="label-text  text-gray-700 dark:text-gray-200">Photo-URL</span>
                                                 </label>
-                                                <input
-                                                    type="text"
-                                                    placeholder="Photo-URL"
-                                                    name="PhotoURL"
-                                                    className="input input-bordered bg-white dark:bg-gray-800"
-                                                    required
-                                                />
+                                                <fieldset>
+                                                    <input
+                                                        type="file"
+                                                        accept="image/*"
+                                                        onChange={(e) => {
+                                                            const file = e.target.files?.[0];
+                                                            if (file) {
+                                                                handleFileSelect(file);
+                                                            }
+                                                        }}
+                                                        className="block w-[97%] text-sm text-white
+                                                        file:mr-4 file:py-2 file:px-4
+                                                        file:rounded file:border-0 file:text-sm file:font-semibold
+                                                        file:bg-pink-50 file:text-pink-700 hover:file:bg-pink-100
+                                                        border border-white/50 rounded-lg bg-white/10"
+                                                    />
+                                                    <label className="text-xs text-white/70">Max size 32MB</label>
+                                                </fieldset>
                                             </div>
                                             <div className="form-control relative">
                                                 <label className="label">

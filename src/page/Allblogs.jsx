@@ -24,7 +24,7 @@ const Allblogs = () => {
     const API = import.meta.env.VITE_API;
 
     useEffect(() => {
-        fetch(`${API}/alldata`)
+        fetch(`${API}/all-blog`)
             .then((res) => res.json())
             .then((data) => {
                 setAll(data);
@@ -38,12 +38,17 @@ const Allblogs = () => {
     }, []);
 
     const handleWatchList = (All) => {
-        fetch(`${API}/watchList`, {
-            method: 'POST',
+        let Id = All._id;
+        let emaiL = user.email;
+        let SendData = { id:Id,email:emaiL } ;
+        console.log(SendData);
+
+        fetch(`${API}/post-watchlists`, {
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(All),
+            body: JSON.stringify(SendData),
         })
             .then((res) => res.json())
             .then((data) => {
@@ -91,7 +96,7 @@ const Allblogs = () => {
             <Navbar />
 
             {/* Hero Section */}
-            <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-purple-700 text-white py-16 md:py-20">
+            <div className="blog-background text-white py-16 md:py-20">
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}

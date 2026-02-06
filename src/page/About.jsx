@@ -1,113 +1,121 @@
-import Navbar from '../Components/navigation/Navbar';
-import Footer from '../Components/navigation/Footer';
+import Navbar from "../Components/navigation/Navbar";
+import Footer from "../Components/navigation/Footer";
 
 const About = () => {
-    return (
-        <>
-            <Navbar />
-            <div className="flex flex-col items-center">
-                <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4">
-                    {/* Image Section */}
-                    <div>
-                        <img
-                            src="https://t4.ftcdn.net/jpg/03/08/69/75/360_F_308697506_9dsBYHXm9FwuW0qcEqimAEXUvzTwfzwe.jpg"
-                            alt="TechBlogger illustration"
-                            className="w-full h-[250px] md:h-[350px] object-cover"
-                        />
-                    </div>
-                    {/* Content Section */}
-                    <div className="border-[15px] border-green-300">
-                        <div className="flex flex-col items-start p-2 gap-3">
-                            <h2 className="text-3xl font-bold">Technobloger</h2>
-                            <div className="text-base sm:text-lg font-medium w-[300px] sm:w-[400px] lg:w-[500px] 
-                            xl:w-[520px] 2xl:w-[720px]">
-                                <h1>Technobloger: Your Ultimate Technology Hub</h1>
-                                <p>
-                                    Technobloger is your go-to destination for the latest in technology. We offer comprehensive reviews, insightful articles, and up-to-date news on startups, gadgets, and tech trends. Our mission is to keep you informed and ahead in the fast-paced world of technology.
-                                </p>
-                                <h2 className='text-xl font-bold'>Why Choose Technobloger?</h2>
-                                <p>
-                                    At Technobloger, we understand the challenges of staying updated in an ever-evolving tech landscape. That’s why our team of experienced writers and tech enthusiasts works tirelessly to bring you the most relevant and accurate information. Whether you're a tech enthusiast, entrepreneur, or industry professional, Technobloger has something for everyone.
-                                </p>
+  return (
+    <>
+      <Navbar />
+      <section className="bg-gradient-to-b from-gray-50 to-white text-gray-800 py-16 max-w-screen overflow-x-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          {/* Header Section */}
+          <div className="text-center mb-12">
+            <h1 className="text-2xl lg:text-4xl md:text-5xl font-extrabold text-green-600 mb-4 tracking-wide">
+              About Technobloger
+            </h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Your ultimate hub for the latest in technology, innovation, and
+              digital trends.
+            </p>
+          </div>
 
-                                <h2 className='text-xl font-bold'>Our Offerings</h2>
-
-                                <h3 className='text-xl font-bold'>1. Comprehensive Reviews</h3>
-                                <p>Our in-depth reviews cover everything from the latest smartphones and laptops to cutting-edge gadgets and software. We provide:</p>
-                                <ul className="list-disc pl-5">
-                                    <li>Detailed analysis</li>
-                                    <li>Pros and cons</li>
-                                    <li>Real-world performance insights</li>
-                                </ul>
-
-                                <h3 className='text-xl font-bold'>2. Insightful Articles</h3>
-                                <p>Stay ahead of the curve with articles exploring the latest trends and innovations in tech, such as:</p>
-                                <ul className="list-disc pl-5">
-                                    <li>Artificial Intelligence (AI)</li>
-                                    <li>Blockchain</li>
-                                    <li>Cybersecurity</li>
-                                    <li>Internet of Things (IoT)</li>
-                                </ul>
-
-                                <h3 className='text-xl font-bold'>3. Up-to-Date News</h3>
-                                <p>Never miss a beat with our real-time news coverage, including:</p>
-                                <ul className="list-disc pl-5">
-                                    <li>Announcements</li>
-                                    <li>Product launches</li>
-                                    <li>Industry developments</li>
-                                </ul>
-
-                                <h3 className='text-xl font-bold'>4. Startups and Innovations</h3>
-                                <p>
-                                    Discover emerging companies and groundbreaking technologies with the potential to disrupt industries and transform daily life.
-                                </p>
-
-                                <h3 className='text-xl font-bold'>5. Community and Engagement</h3>
-                                <p>
-                                    Join our vibrant community of tech enthusiasts and professionals. Participate in forums, comment sections, and discussions to connect with like-minded individuals and expand your knowledge.
-                                </p>
-
-                                <h3 className='text-xl font-bold'>6. Expert Opinions</h3>
-                                <p>
-                                    Gain insights from industry leaders and tech experts through exclusive interviews and opinion pieces.
-                                </p>
-
-                                <h3 className='text-xl font-bold'>7. Tutorials and How-Tos</h3>
-                                <p>Enhance your skills with step-by-step guides tailored for:</p>
-                                <ul className="list-disc pl-5">
-                                    <li>Beginners learning the basics</li>
-                                    <li>Advanced users mastering new techniques</li>
-                                </ul>
-
-                                <h3 className='text-xl font-bold'>8. Events and Conferences</h3>
-                                <p>Stay informed about global tech events with:</p>
-                                <ul className="list-disc pl-5">
-                                    <li>Previews</li>
-                                    <li>Live updates</li>
-                                    <li>Post-event analysis</li>
-                                </ul>
-
-                                <h3 className='text-xl font-bold'>9. Technobloger Newsletter</h3>
-                                <p>Subscribe to our newsletter to receive:</p>
-                                <ul className="list-disc pl-5">
-                                    <li>Latest updates</li>
-                                    <li>Exclusive content</li>
-                                    <li>Special offers</li>
-                                </ul>
-                                <p>Stay connected and never miss out on the latest in technology.</p>
-
-                                <h2 className='text-xl font-bold'>Join Us on This Exciting Journey</h2>
-                                <p>
-                                    At Technobloger, we are passionate about technology and committed to delivering the best content possible. Let’s explore the ever-evolving world of tech together.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          {/* Content Layout */}
+          <div className="flex flex-col lg:flex-row gap-10">
+            {/* Left Image */}
+            <div className="w-full lg:w-1/2">
+              <img
+                src="https://t4.ftcdn.net/jpg/03/08/69/75/360_F_308697506_9dsBYHXm9FwuW0qcEqimAEXUvzTwfzwe.jpg"
+                alt="Technobloger illustration"
+                className="rounded-2xl shadow-xl hover:scale-105 transition-transform duration-500"
+              />
             </div>
-            <Footer />
-        </>
-    );
+
+            {/* Right Content */}
+            <div className="w-full lg:w-1/2 bg-white shadow-lg border border-green-200 rounded-2xl p-8">
+              <h2 className="text-3xl font-semibold text-green-600 mb-4">
+                Welcome to Technobloger
+              </h2>
+              <p className="text-gray-700 leading-relaxed mb-6 font-sans">
+                Technobloger is your go-to destination for the latest in
+                technology. We offer comprehensive reviews, insightful articles,
+                and up-to-date news on startups, gadgets, and tech trends. Our
+                mission is to keep you informed and ahead in the fast-paced
+                world of technology.
+              </p>
+
+              <h3 className="text-2xl font-semibold mb-3 text-green-500">
+                Why Choose Us?
+              </h3>
+              <p className="text-gray-700 mb-6 font-serif">
+                Our team of experienced writers and tech enthusiasts brings you
+                reliable and engaging content that helps you stay ahead in the
+                ever-evolving tech landscape.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {[
+                  {
+                    title: "Comprehensive Reviews",
+                    desc: "Detailed analysis, pros & cons, and real-world performance.",
+                  },
+                  {
+                    title: "Insightful Articles",
+                    desc: "In-depth explorations of AI, Blockchain, IoT, and more.",
+                  },
+                  {
+                    title: "Up-to-Date News",
+                    desc: "Stay informed about the latest tech updates and launches.",
+                  },
+                  {
+                    title: "Startups & Innovations",
+                    desc: "Discover emerging companies changing the world.",
+                  },
+                  {
+                    title: "Community & Engagement",
+                    desc: "Join a growing network of tech enthusiasts.",
+                  },
+                  {
+                    title: "Expert Opinions",
+                    desc: "Insights and interviews from top industry professionals.",
+                  },
+                  {
+                    title: "Tutorials & How-Tos",
+                    desc: "Step-by-step guides for beginners and experts alike.",
+                  },
+                  {
+                    title: "Events & Conferences",
+                    desc: "Get updates and analyses from global tech events.",
+                  },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="border-l-4 border-green-400 bg-gray-50 hover:bg-green-50 transition duration-300 rounded-md p-4 shadow-sm"
+                  >
+                    <h4 className="text-lg font-bold text-green-600 mb-1">
+                      {item.title}
+                    </h4>
+                    <p className="text-sm text-gray-600">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-10">
+                <h3 className="text-2xl font-semibold text-green-500 mb-2">
+                  Join Our Journey
+                </h3>
+                <p className="text-gray-700">
+                  At Technobloger, we're passionate about technology and
+                  dedicated to sharing knowledge that empowers you. Subscribe to
+                  our newsletter, engage with our content, and be a part of this
+                  growing tech community.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </>
+  );
 };
 
 export default About;
