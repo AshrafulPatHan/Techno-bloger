@@ -191,7 +191,7 @@ const Registration = () => {
                                                         file:bg-pink-50 file:text-pink-700 hover:file:bg-pink-100
                                                         border border-white/50 rounded-lg bg-white/10"
                                                     />
-                                                    <label className="text-xs text-white/70">Max size 32MB</label>
+                                                   <label className="text-xs text-gray-500 dark:text-gray-400">Max size 32MB / Recommended size: 500x500px</label>
                                                 </fieldset>
                                             </div>
                                             <div className="form-control relative">

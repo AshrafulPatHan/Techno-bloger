@@ -111,8 +111,8 @@ const AddBlog = () => {
                             <span className="font-semibold text-lg">Create New Post</span>
                         </div>
                     </div>
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-                        Share Your Story
+                    <h1 className="text-4xl text-white text-shadow-xl md:text-5xl lg:text-6xl font-bold mb-4 ">
+                        Share Your Blogs
                     </h1>
                     <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto">
                         Write, inspire, and connect with readers around the world
@@ -187,12 +187,7 @@ const AddBlog = () => {
                                         <FaImage className="text-blue-600 dark:text-blue-400 text-xl" />
                                         Cover Image URL
                                     </label>
-                                    {/* <input
-                                        type="url"
-                                        name="Image"
-                                        placeholder="https://example.com/image.jpg"
-                                        className="w-full px-5 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none transition-all text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
-                                    /> */}
+                                    
                                     <fieldset>
                                         <input
                                             type="file"
@@ -209,11 +204,8 @@ const AddBlog = () => {
                                file:bg-pink-50 file:text-pink-700 hover:file:bg-pink-100
                                border border-white/50 rounded-lg bg-white/10"
                                         />
-                                        <label className="text-xs text-white/70">Max size 32MB</label>
+                                        <label className="text-xs text-gray-500 dark:text-gray-400">Max size 32MB / Recommended size: 1200x630px</label>
                                     </fieldset>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 ml-1">
-                                        Recommended size: 1200x630px
-                                    </p>
                                 </div>
                             </div>
 
