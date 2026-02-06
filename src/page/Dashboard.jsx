@@ -9,6 +9,7 @@ import { useNavigate } from "react-router";
 import { FaUser, FaEnvelope, FaImage, FaEdit, FaCamera, FaCheckCircle, FaFacebook, FaLinkedin, FaInstagram, FaDribbble, FaTwitter, FaYoutube, FaGithub, FaGlobe } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { MdVerified } from "react-icons/md";
+import Loader from "../Components/error/Lodaing";
 
 export default function Dashboard() {
     const { user } = useContext(AuthContext);
@@ -113,7 +114,7 @@ export default function Dashboard() {
             });
 
             // Update API data
-            const response = await fetch(`${API}/${userData._id}`, {
+            const response = await fetch(`${API}/update-user`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -152,12 +153,7 @@ export default function Dashboard() {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center">
-                <div className="text-center">
-                    <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto"></div>
-                    <p className="mt-4 text-gray-600 dark:text-gray-400">Loading your dashboard...</p>
-                </div>
-            </div>
+            <><Loader /></>
         );
     }
 
@@ -187,7 +183,7 @@ export default function Dashboard() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Profile Card */}
                     <div className="lg:col-span-2">
-                        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden">
+                        <div className=" bg-gradient-to-br from-gray-50 via-blue-100 to-purple-50 dark:from-gray-900 dark:via-gray-700 dark:to-gray-800 rounded-3xl shadow-2xl overflow-hidden">
                             {/* Profile Header with Image */}
                             <div className="relative h-48 ">
                                 <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2">
@@ -230,27 +226,52 @@ export default function Dashboard() {
                                     )}
                                 </div>
 
-                                <div className="flex flex-col items-center">
-                                    {/* Stats Grid */}
-                                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 mx-auto">
-                                        <div className=" w-56 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-2xl p-6 text-center border border-blue-200 dark:border-blue-800">
-                                            <p className="text-lg sm:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">
-                                                {userData?.watchlists?.length || 0}
-                                            </p>
-                                            <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">Watchlists</p>
+                                <div className="flex flex-col items-center justify-center mx-auto mb-10">
+                                    
+                                    {/* Activity Section */}
+                                    <div className="  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                                            <div className="flex items-center justify-between mb-4">
+                                                <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-xl">
+                                                    <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                                                    </svg>
+                                                </div>
+                                                <span className="text-3xl font-bold text-gray-800 dark:text-white">
+                                                    {userData?.watchlists?.length || 0}
+                                                </span>
+                                            </div>
+                                            <h3 className="text-gray-600 dark:text-gray-400 font-semibold">Total Watchlists</h3>
                                         </div>
-                                        <div className="w-56 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-2xl p-6 text-center border border-purple-200 dark:border-purple-800">
-                                            <p className="text-lg sm:text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">
-                                                {dashboardData.following || 0}
-                                            </p>
-                                            <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">Following</p>
+
+                                        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                                            <div className="flex items-center justify-between mb-4">
+                                                <div className="bg-green-100 dark:bg-green-900/30 p-3 rounded-xl">
+                                                    <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                                    </svg>
+                                                </div>
+                                                <span className="text-3xl font-bold text-gray-800 dark:text-white">
+                                                    {dashboardData.following || 0}
+                                                </span>
+                                            </div>
+                                            <h3 className="text-gray-600 dark:text-gray-400 font-semibold">Following</h3>
                                         </div>
-                                        <div className="w-56 bg-gradient-to-br from-pink-50 to-pink-100 dark:from-pink-900/20 dark:to-pink-800/20 rounded-2xl p-6 text-center border border-pink-200 dark:border-pink-800">
-                                            <p className="text-lg sm:text-3xl font-bold text-pink-600 dark:text-pink-400 mb-1">
-                                                {dashboardData.followers || 0}
-                                            </p>
-                                            <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">Followers</p>
+
+                                        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                                            <div className="flex items-center justify-between mb-4">
+                                                <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-xl">
+                                                    <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                                    </svg>
+                                                </div>
+                                                <span className="text-3xl font-bold text-gray-800 dark:text-white">
+                                                    {dashboardData.followers || 0}
+                                                </span>
+                                            </div>
+                                            <h3 className="text-gray-600 dark:text-gray-400 font-semibold">Followers</h3>
                                         </div>
+
                                     </div>
                                 </div>
 
@@ -445,64 +466,7 @@ export default function Dashboard() {
                     </div>
                 </div>
 
-                {/* Activity Section */}
-                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-                        <div className="flex items-center justify-between mb-4">
-                            <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-xl">
-                                <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-                                </svg>
-                            </div>
-                            <span className="text-3xl font-bold text-gray-800 dark:text-white">
-                                {userData?.watchlists?.length || 0}
-                            </span>
-                        </div>
-                        <h3 className="text-gray-600 dark:text-gray-400 font-semibold">Total Watchlists</h3>
-                    </div>
 
-                    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-                        <div className="flex items-center justify-between mb-4">
-                            <div className="bg-green-100 dark:bg-green-900/30 p-3 rounded-xl">
-                                <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                            </div>
-                            <span className="text-3xl font-bold text-gray-800 dark:text-white">
-                                {dashboardData.following || 0}
-                            </span>
-                        </div>
-                        <h3 className="text-gray-600 dark:text-gray-400 font-semibold">Following</h3>
-                    </div>
-
-                    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-                        <div className="flex items-center justify-between mb-4">
-                            <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-xl">
-                                <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                                </svg>
-                            </div>
-                            <span className="text-3xl font-bold text-gray-800 dark:text-white">
-                                {dashboardData.followers || 0}
-                            </span>
-                        </div>
-                        <h3 className="text-gray-600 dark:text-gray-400 font-semibold">Followers</h3>
-                    </div>
-
-                    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-                        <div className="flex items-center justify-between mb-4">
-                            <div className="bg-pink-100 dark:bg-pink-900/30 p-3 rounded-xl">
-                                <svg className="w-6 h-6 text-pink-600 dark:text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                </svg>
-                            </div>
-                            <span className="text-3xl font-bold text-gray-800 dark:text-white">
-                                {dashboardData.followers + dashboardData.following || 0}
-                            </span>
-                        </div>
-                        <h3 className="text-gray-600 dark:text-gray-400 font-semibold">Total Connections</h3>
-                    </div>
-                </div>
             </div>
 
             <Footer />
